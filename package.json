@@ -33,6 +33,8 @@
     "add-dev-data-submodule-SAMPLE": "echo --Add .dev-data submodule-- && ( test ! -d .dev-data || git rm -rf .dev-data ) && git submodule add -f git@github.com:lilliputten/django-test-1902-dev-data.git .dev-data",
     "add-templates-submodule-SAMPLE": "echo --Add .bem/templates submodule-- && ( test ! -d .bem/templates || git rm -rf .bem/templates ) && git submodule add -f git@github.com:lilliputten/bem-templates-react-ts-v1.git .bem/templates",
     "postinstall-SAMPLE": "echo --Run postinstall tasks-- && npm-run-all install-patches add-templates-submodule add-dev-data-submodule add-publish-submodule",
+    "django-server": "python manage.py runserver",
+    "django-migrate": "python manage.py migrate",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }
 }
