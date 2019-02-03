@@ -2,7 +2,7 @@
  vim: ft=markdown:
 -->
 
-# itu-library-1812
+# django-test-1902
 
 ## Project docs
 
@@ -13,6 +13,7 @@
 ## Config files
 
 - `package.json`
+- `django_project/settings.py`
 - ~~`gulpfile.js`~~
 - `.bemrc.js`
 - `config-overrides.js`
