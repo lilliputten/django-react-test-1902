@@ -3,6 +3,11 @@
 # Generated content & submodules
 .dev-data
 
+# Python/Django
+*.pyc
+# *.db
+# *.sqlite3
+
 # Unused & temp files
 \!UNUSED
 ~*
