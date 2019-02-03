@@ -1,0 +1,43 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# Generated content & submodules
+.dev-data
+
+# Unused & temp files
+\!UNUSED
+~*
+*_
+zia*
+*.log
+*.sw?
+*~
+\!ARC*
+#*.session
+.publish/
+
+# Include special jest files/folders
+!__mocks__
+!__snapshots__
+!__tests__
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+# uncomment if need to deploy archive
+build-pack.zip
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
