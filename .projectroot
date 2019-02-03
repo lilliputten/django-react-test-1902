@@ -13,12 +13,14 @@
 ## Config files
 
 - `package.json`
+- `.editorconfig`
 - `django_project/settings.py`
 - ~~`gulpfile.js`~~
 - `.bemrc.js`
 - `config-overrides.js`
 - `jest.config.js`
 - `.lvimrc`
+- `.flake8`
 - `tsconfig.json` (set/reset `noUnusedLocals`, `noUnusedParameters` for production/development)
 - `tslint.yaml`
 - `.eslintrc.yml`
@@ -45,4 +47,9 @@ workon django-test-1902
 pip install Django==1.8.19
 pip freeze django
 django-admin --version
+python manage.py startapp testapp
 ```
+
+## Python in vim
+
+- [VIM and Python – A Match Made in Heaven – Real Python](https://realpython.com/vim-and-python-a-match-made-in-heaven/#vim-extensions)
