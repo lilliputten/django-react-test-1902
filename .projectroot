@@ -13,13 +13,14 @@
 ## Config files
 
 - `package.json`
-- `.editorconfig`
+- `requirements.txt`
 - `django_project/settings.py`
+- `.lvimrc`
+- `.editorconfig`
 - ~~`gulpfile.js`~~
 - `.bemrc.js`
 - `config-overrides.js`
 - `jest.config.js`
-- `.lvimrc`
 - `.flake8`
 - `tsconfig.json` (set/reset `noUnusedLocals`, `noUnusedParameters` for production/development)
 - `tslint.yaml`
@@ -34,7 +35,7 @@
 
 - `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.styl,*.md,*.json,*.yaml,*.sh`
 
-## Virtualenv
+## Python/Virtualenv on Windows
 
 - [How to install Django on Windows | Django documentation | Django](https://docs.djangoproject.com/en/1.8/howto/windows/)
 - [How to install Django | Django documentation | Django](https://docs.djangoproject.com/en/1.8/topics/install/)
@@ -42,13 +43,25 @@
 - [Writing your first Django app, part 1 | Django documentation | Django](https://docs.djangoproject.com/en/1.8/intro/tutorial01/)
 
 ```shell
+pip install virtualenv virtualenvwrapper-win
 mkvirtualenv django-test-1902
 workon django-test-1902
+virtualenv .project
 pip install Django==1.8.19
 pip freeze django
 django-admin --version
 python manage.py startapp testapp
 ```
+
+Set variables:
+```shell
+WORKON_HOME=C:/Home/User/Envs
+PYTHON_PATH=...
+PATH=%PATH%;%PYTHON_PATH%;%PYTHON_PATH%/Scripts
+VIRTUAL_ENV=.venv
+```
+
+NOTE: vim and python must be both 32 or 64 bit (32 bit on 2019.02.04 -- use 32bit Python27 -- python-2.7.15-32bit.msi)
 
 ## Python in vim
 

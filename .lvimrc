@@ -1,27 +1,16 @@
 " vim: ft=vim
 
 let g:ale_linters = {
+\   'python': [ 'flake8' ],
 \   'javascript': [ 'eslint' ],
 \   'typescript': [ 'tsserver' ],
-\   'python': [ 'flake8' ],
 \}
 
 " variants:
 " \   'typescript': [ 'tslint' ],
 " \   'typescript': [ 'tsserver' ],
+" \   'python': [ 'flake8' ],
 
 let g:ale_css_stylelint_options = '--syntax scss'
 let g:ale_stylus_stylelint_options = '--syntax scss'
 
-" let python_highlight_all=1
-" syntax on
-
-" python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF

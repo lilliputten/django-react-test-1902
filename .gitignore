@@ -4,6 +4,7 @@
 .dev-data
 
 # Python/Django
+.venv
 *.pyc
 # *.db
 # *.sqlite3
