@@ -33,7 +33,11 @@
 
 ## Module extensions
 
-- `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.styl,*.md,*.json,*.yaml,*.sh`
+- `*.py,*.wsgi,*.js,*.jsx,*.ts,*.tsx,*.css,*.styl,*.md,*.json,*.yml,*.yaml,*.sh`
+
+## Django env
+
+- Installed Django admin templates: `.venv/Lib/site-packages/django/contrib/admin/templates/admin`
 
 ## Python/Virtualenv on Windows
 
@@ -41,12 +45,15 @@
 - [How to install Django | Django documentation | Django](https://docs.djangoproject.com/en/1.8/topics/install/)
 - [django-admin and manage.py | Django documentation | Django](https://docs.djangoproject.com/en/1.8/ref/django-admin/)
 - [Writing your first Django app, part 1 | Django documentation | Django](https://docs.djangoproject.com/en/1.8/intro/tutorial01/)
+- [Python & pip Windows installation · BurntSushi/nfldb Wiki](https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 
 ```shell
 pip install virtualenv virtualenvwrapper-win
 mkvirtualenv django-test-1902
 workon django-test-1902
-virtualenv .project
+virtualenv .venv
+call .venv/Scripts/activate
+pip install -r requirements.txt
 pip install Django==1.8.19
 pip freeze django
 django-admin --version

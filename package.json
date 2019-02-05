@@ -37,9 +37,15 @@
     "venv-wrapper": "workon django-test-1902",
     "venv-init": "virtualenv .venv",
     "venv-activate-call": ".venv/Scripts/activate",
-    "django-server": "python manage.py runserver",
-    "django-migrate": "python manage.py migrate",
     "install-requirements": "pip install -r requirements.txt",
+    "django-server": "echo --Start django development server-- && python manage.py runserver",
+    "django-migrate": "python manage.py migrate",
+    "django-polls-SAMPLE": "echo ...Sample polls app commands...",
+    "django-polls-makemigrations-SAMPLE": "echo --Make migrations (polls)-- && python manage.py makemigrations polls",
+    "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
+    "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
+    "django-migrate": "echo --Apply migrations-- && python manage.py migrate",
+    "django-createsuperuser": "python manage.py createsuperuser",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }
 }

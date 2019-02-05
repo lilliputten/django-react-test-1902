@@ -1,2 +1,3 @@
 flake8
+pylint
 Django==1.8.19
