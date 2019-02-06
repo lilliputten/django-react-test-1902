@@ -20,10 +20,10 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
 
 
 def index(request):
-    # DEBUG!
-    f = open(os.path.join(SITE_ROOT, 'django.log'), 'a+')
-    f.write('react1 index log\n')
-    f.close()
+    # # DEBUG!
+    # f = open(os.path.join(SITE_ROOT, 'django.log'), 'a+')
+    # f.write('react1 index log\n')
+    # f.close()
     return HttpResponse(
         "CWD: " + CWD + "<br/>\n" +
         "SITE_ROOT: " + SITE_ROOT + "<br/>\n" +
