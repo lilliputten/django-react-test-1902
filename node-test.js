@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 const x = 'ES6 Ok';
-console.log('node-test result', xy);
+console.log('node-test result', x);
 setTimeout(() => {
   console.log('Timeout ok');
 }, 1000);
