@@ -16,7 +16,7 @@ SITE_ROOT = '/home/g/goldenjeru/lilliputten.ru/django-test-1902/'
 sys.path.insert(1, SITE_ROOT)
 
 # DEBUG!
-f = open(os.path.join(SITE_ROOT, 'django.log'), 'w+')
+f = open(os.path.join(SITE_ROOT, 'django.log'), 'a+')
 f.write('index.wsgi log\n')
 f.close()
 
