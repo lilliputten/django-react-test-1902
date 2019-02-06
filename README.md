@@ -17,3 +17,26 @@ React REST:
 
 - [Tutorial: Django REST with React (Django 2.0 and a sprinkle of testing)](https://www.valentinog.com/blog/tutorial-api-django-rest-react/)
 
+## NodeJS on server
+
+Python packages:
+
+- https://github.com/markfinger/python-nodejs
+
+NodeJS:
+
+- [Quick -- Install prebuilt node with nodeenv](https://lincolnloop.com/blog/installing-nodejs-and-npm-python-virtualenv/)
+
+```shell
+pip install nodeenv
+nodeenv -p
+```
+
+- [Compile and install latest node](https://kartoza.com/en/blog/nodeenv-how-to-install-nodejs-in-a-python-virtualenv/)
+
+```shell
+$ curl http://nodejs.org/dist/node-latest.tar.gz | tar xvz
+$ cd node-v*
+$ ./configure --prefix=$VIRTUAL_ENV
+$ make install
+```
