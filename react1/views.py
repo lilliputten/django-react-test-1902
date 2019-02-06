@@ -11,6 +11,9 @@ import os.path
 import subprocess
 # from nodejs.bindings import node_run
 
+import django
+
+
 CWD = os.path.dirname(os.path.realpath(__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
@@ -21,6 +24,7 @@ def index(request):
         "CWD: " + CWD + "<br/>\n" +
         "SITE_ROOT: " + SITE_ROOT + "<br/>\n" +
         "PROJECT_ROOT: " + PROJECT_ROOT + "<br/>\n" +
+        "Django version: " + '.'.join(map(lambda x: str(x), django.VERSION)) + "<br/>\n" +
         ""
     )
 
