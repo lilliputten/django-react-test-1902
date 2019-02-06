@@ -41,6 +41,7 @@
     "django-server": "echo --Start django development server-- && python manage.py runserver",
     "django-migrate": "python manage.py migrate",
     "django-polls-SAMPLE": "echo ...Sample polls app commands...",
+    "django-polls-startapp-SAMPLE": "python manage.py startapp polls",
     "django-polls-makemigrations-SAMPLE": "echo --Make migrations (polls)-- && python manage.py makemigrations polls",
     "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
     "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
