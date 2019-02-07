@@ -9,10 +9,11 @@
 
 const path = require('path');
 
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractCssPlugin = require('mini-css-extract-plugin');
 
 const bundlesPath = path.resolve('./bundles');
 
@@ -30,11 +31,71 @@ module.exports = {
       sourceMapFilename: '[file].map',
   },
 
-  plugins: [
-    // new webpack.SourceMapDevToolPlugin({
-    //   test: ['.js', '.jsx', '.mjs', '.css'],
-    //   moduleFilenameTemplate: 'webpack://[namespace]/[resource-path]?[loaders]',
-    // }),
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'app'),
+    ],
+    extensions: ['.js', '.json', '.jsx', '.css'],
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'src'),
+    compress: true,
+    port: 8080,
+  },
+
+  /*{{{*/module: {
+    rules: [
+      /*{{{ jsx */{
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        // cacheable: true,
+        query: {
+            retainLines: true,
+            cacheDirectory: true,
+        },
+      },/*}}}*/
+      /*{{{ css */{
+        test: /\.css$/,
+        // loader: 'css-loader!csso-loader',
+        use: [
+          ExtractCssPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer')({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+                require('postcss-csso'),
+              ],
+            },
+          },
+        ],
+      },/*}}}*/
+    ],
+  },/*}}}*/
+
+  /*{{{*/plugins: [
     new CleanWebpackPlugin(
       [
         path.join(bundlesPath, '**/*'),
@@ -54,53 +115,9 @@ module.exports = {
     new BundleTracker({
       filename: './webpack-stats.json',
     }),
-  ],
-
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        // cacheable: true,
-        query: {
-            retainLines: true,
-            cacheDirectory: true,
-        },
-      },
-      {
-        test: /\.css$/,
-        use: [
-          require.resolve('style-loader'),
-          // require.resolve('extract-loader'), // ???
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-              sourceMap: true,
-              // modules: true,
-              localIdentName: '[name]-[local]-[hash:base64]',
-            },
-          },
-        ],
-      },
-      // postcss
-    ],
-  },
-
-  resolve: {
-    // modulesDirectories: [ 'node_modules' ],
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, 'app'),
-    ],
-    extensions: ['.js', '.json', '.jsx', '.css'],
-  },
-
-  devServer: {
-    contentBase: path.join(__dirname, 'src'),
-    compress: true,
-    port: 8080,
-  },
+    new ExtractCssPlugin({
+      filename: '[name]-[contenthash:8].css',
+    }),
+  ],/*}}}*/
 
 };
