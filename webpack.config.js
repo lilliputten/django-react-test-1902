@@ -13,27 +13,39 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const bundlesPath = path.resolve('./assets/bundles');
+const bundlesPath = path.resolve('./bundles');
 
 module.exports = {
 
   context: __dirname,
 
-  entry: './assets/js/index', // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
+  entry: './src/index',
 
   output: {
       path: bundlesPath,
-      filename: '[name]-[hash].js',
+      filename: '[name]-[hash:8].js',
   },
 
   plugins: [
-    new CleanWebpackPlugin([bundlesPath]),
+    new CleanWebpackPlugin(
+      [
+        path.join(bundlesPath, '**/*'),
+      ],
+      {
+        exclude: ['.gitkeep'],
+        verbose: true,
+        beforeEmit: true,
+        // dry: false,
+      },
+    ),
     new HtmlWebPackPlugin({
       inject: true,
-      template: './assets/index.html',
+      template: './src/index.html',
       // filename: './index.html',
     }),
-    new BundleTracker({ filename: './webpack-stats.json' }),
+    new BundleTracker({
+      filename: './webpack-stats.json',
+    }),
   ],
 
   module: {
@@ -53,8 +65,8 @@ module.exports = {
             options: {
               importLoaders: 1,
               sourceMap: true,
-              modules: true,
-              localIdentName: '[name]_[local]_[hash:base64]',
+              // modules: true,
+              localIdentName: '[name]-[local]-[hash:base64]',
             },
           },
         ],
@@ -73,7 +85,7 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'assets'),
+    contentBase: path.join(__dirname, 'src'),
     compress: true,
     port: 8080,
   },
