@@ -46,10 +46,10 @@
 
 ## Python/Virtualenv on Windows
 
-- [How to install Django on Windows | Django documentation | Django](https://docs.djangoproject.com/en/1.8/howto/windows/)
-- [How to install Django | Django documentation | Django](https://docs.djangoproject.com/en/1.8/topics/install/)
-- [django-admin and manage.py | Django documentation | Django](https://docs.djangoproject.com/en/1.8/ref/django-admin/)
-- [Writing your first Django app, part 1 | Django documentation | Django](https://docs.djangoproject.com/en/1.8/intro/tutorial01/)
+- [How to install Django on Windows | Django documentation | Django](https://docs.djangoproject.com/en/1.11/howto/windows/)
+- [How to install Django | Django documentation | Django](https://docs.djangoproject.com/en/1.11/topics/install/)
+- [django-admin and manage.py | Django documentation | Django](https://docs.djangoproject.com/en/1.11/ref/django-admin/)
+- [Writing your first Django app, part 1 | Django documentation | Django](https://docs.djangoproject.com/en/1.11/intro/tutorial01/)
 - [Python & pip Windows installation · BurntSushi/nfldb Wiki](https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 
 ```shell

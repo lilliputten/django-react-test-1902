@@ -25,16 +25,27 @@ def index(request):
     # f.write('react1 index log\n')
     # f.close()
     return HttpResponse(
-        "CWD: " + CWD + "<br/>\n" +
-        "SITE_ROOT: " + SITE_ROOT + "<br/>\n" +
-        "PROJECT_ROOT: " + PROJECT_ROOT + "<br/>\n" +
-        "Django version: " + '.'.join(map(lambda x: str(x), django.VERSION)) + "<br/>\n" +
-        ""
+        '<ul>\n' +
+        '<li><a href="env_test">env_test</a></li>\n' +
+        '<li><a href="node_test">node_test</a></li>\n' +
+        '</ul>'
     )
 
 
-def test(request):
-    script_name = os.path.join(SITE_ROOT, 'node-test.js')
+def env_test(request):
+    return HttpResponse(
+        '<pre>' +
+        '<h1>env_test</h1>\n' +
+        'CWD: ' + CWD + '\n' +
+        'SITE_ROOT: ' + SITE_ROOT + '\n' +
+        'PROJECT_ROOT: ' + PROJECT_ROOT + '\n' +
+        'Django version: ' + '.'.join(map(lambda x: str(x), django.VERSION)) + '\n' +
+        '</pre>'
+    )
+
+
+def node_test(request):
+    script_name = os.path.join(SITE_ROOT, 'react1', 'node-test.js')
     # stderr, stdout = node_run(script_name, '--some-argument')
     # p = subprocess.Popen(["node", "-v"], stdout=subprocess.PIPE)
     p = subprocess.Popen(["node", script_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -43,5 +54,5 @@ def test(request):
     output = 'Script: ' + script_name + '\n' + output + '\n'
     if err:
         output += 'Error: ' + err
-    output = '<pre>' + output + '</pre>'
+    output = '<h1>node_test</h1>' + '<pre>' + output + '</pre>'
     return HttpResponse(output)

@@ -6,7 +6,7 @@ Django sample app
 
 Django:
 
-- [Writing your first Django app, part 4 | Django documentation | Django](https://docs.djangoproject.com/en/1.8/intro/tutorial04/)
+- [Writing your first Django app, part 4 | Django documentation | Django](https://docs.djangoproject.com/en/1.11/intro/tutorial04/)
 
 React/Webpack/Django:
 
