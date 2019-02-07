@@ -18,6 +18,7 @@
     "node": ">=8"
   },
   "dependencies": {
+    "npm-run-all": "^4.1.5",
     "react-dom": "^16.8.1"
   },
   "devDependencies": {
@@ -29,11 +30,13 @@
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
+    "eslint": "^5.13.0",
     "eslint-plugin-react": "^7.12.4",
     "extract-loader": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.1",
     "style-loader": "^0.23.1",
+    "stylelint": "^9.10.1",
     "webpack": "^4.29.3",
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "^3.2.3",
@@ -66,10 +69,18 @@
     "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
     "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
     "django-createsuperuser": "python manage.py createsuperuser",
+    "[tests]": "Testing & linting...",
+    "stylelint": "echo --Postcss linting-- && stylelint src/**/*.css --syntax scss && echo No postcss problems found",
+    "eslint": "echo --JS source code linting-- && eslint . --ext .js,.jsx && echo No JS problems found",
+    "tslint-SAMPLE": "echo --TS source code linting-- && tslint -p . --format stylish --exclude \"**/*.{js,jsx}\" && echo No TS problems found",
+    "lint-SAMPLE": "echo --Lint all source code-- && npm-run-all stylelint eslint tslint",
+    "jest-SAMPLE": "echo --Run tests-- && jest",
+    "test-SAMPLE": "echo --Run all lintings and tests-- && npm-run-all lint jest",
+    "test": "echo --Run all lintings and tests-- && npm-run-all eslint stylelint",
     "[webpack]": "Webpack commands",
-    "server": "webpack-dev-server --mode development --hot",
-    "build-dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "server": "echo --Webpack development server-- && webpack-dev-server --mode development --hot",
+    "build-dev": "echo --Webpack build (development mode)-- && webpack --mode development",
+    "build": "echo --Webpack build-- && webpack --mode production",
     "[utils]": "Misc helper utils...",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }

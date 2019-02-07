@@ -17,6 +17,8 @@
 ## Config files
 
 - `package.json`
+- `webpack.config.js`
+- `babel.config.js`
 - `requirements.txt`
 - `django_project/settings.py`
 - `django_project/urls.py`
@@ -30,6 +32,7 @@
 - `tsconfig.json` (set/reset `noUnusedLocals`, `noUnusedParameters` for production/development)
 - `tslint.yaml`
 - `.eslintrc.yml`
+- `.eslintignore`
 - '.stylelintrc.yml'
 - `src/config/__css/config__css.js`
 - `src/config/__site/config__site.js`

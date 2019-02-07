@@ -8,6 +8,7 @@
  */
 
 const path = require('path');
+
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -21,12 +22,19 @@ module.exports = {
 
   entry: './src/index',
 
+  devtool: 'cheap-module-source-map',
+
   output: {
       path: bundlesPath,
       filename: '[name]-[hash:8].js',
+      sourceMapFilename: '[file].map',
   },
 
   plugins: [
+    // new webpack.SourceMapDevToolPlugin({
+    //   test: ['.js', '.jsx', '.mjs', '.css'],
+    //   moduleFilenameTemplate: 'webpack://[namespace]/[resource-path]?[loaders]',
+    // }),
     new CleanWebpackPlugin(
       [
         path.join(bundlesPath, '**/*'),
@@ -36,7 +44,7 @@ module.exports = {
         verbose: true,
         beforeEmit: true,
         // dry: false,
-      },
+      }
     ),
     new HtmlWebPackPlugin({
       inject: true,
@@ -54,6 +62,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        // cacheable: true,
+        query: {
+            retainLines: true,
+            cacheDirectory: true,
+        },
       },
       {
         test: /\.css$/,

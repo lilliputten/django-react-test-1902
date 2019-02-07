@@ -1,20 +1,23 @@
 # https://eslint.org/docs/rules/
 # https://eslint.org/docs/user-guide/configuring#specifying-environments
 env:
-  # browser: true
+  browser: true
   commonjs: true
   es6: true
   # node: true
 extends:
   - 'eslint:recommended'
-  - 'plugin:react/recommended'
+  - 'plugin:react/recommended' # https://github.com/yannickcr/eslint-plugin-react#configuration
+settings:
+  react:
+    version: 'detect'
 parserOptions:
   # ecmaVersion: 2018
   ecmaVersion: 5
   sourceType: module
   files:
     -
-      patterns: '**/*.bemhtml'
+      patterns: '**/*.jsx'
 rules:
   no-unused-vars:
     - warn

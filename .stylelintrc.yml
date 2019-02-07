@@ -12,6 +12,7 @@ files:
   - "src/**/*.css"
 ignoreFiles:
   - "**/*_"
+  - "bundles/"
 
 rules:
   indentation:

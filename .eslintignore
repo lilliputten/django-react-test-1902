@@ -4,10 +4,15 @@
 node_modules/
 public/
 build/
+bundles/
 utils/
 dist/
 
 !.*.js
+
+# Django
+django_project/
+templates/
 
 # Non-code folders...
 \!Patches/
