@@ -17,9 +17,13 @@
   "engines": {
     "node": ">=8"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.8.1",
+    "webpack": "^4.29.3",
+    "webpack-bundle-tracker": "^0.4.2-beta"
   },
   "jest": {
     "transform": {
@@ -39,13 +43,12 @@
     "venv-activate-call": ".venv/Scripts/activate",
     "install-requirements": "pip install -r requirements.txt",
     "django-server": "echo --Start django development server-- && python manage.py runserver",
-    "django-migrate": "python manage.py migrate",
+    "django-migrate": "echo --Apply migrations-- && python manage.py migrate",
     "django-polls-SAMPLE": "echo ...Sample polls app commands...",
     "django-polls-startapp-SAMPLE": "python manage.py startapp polls",
     "django-polls-makemigrations-SAMPLE": "echo --Make migrations (polls)-- && python manage.py makemigrations polls",
     "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
     "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
-    "django-migrate": "echo --Apply migrations-- && python manage.py migrate",
     "django-createsuperuser": "python manage.py createsuperuser",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }
