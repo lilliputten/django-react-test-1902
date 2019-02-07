@@ -17,13 +17,24 @@
   "engines": {
     "node": ">=8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-dom": "^16.8.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "babel": "^6.23.0",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.1",
     "webpack": "^4.29.3",
-    "webpack-bundle-tracker": "^0.4.2-beta"
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   },
   "jest": {
     "transform": {
@@ -32,11 +43,13 @@
     }
   },
   "scripts": {
+    "[install]": "Some init scripts",
     "install-patches-SAMPLE": "cd \"!Patches\" && pwd && sh ./patch-tool-apply-all && cd ..",
     "add-publish-submodule-SAMPLE": "echo --Add .publish submodule-- && ( test ! -d .publish || git rm -f .publish ) && git submodule add -f git@github.com:lilliputten/django-test-1902-build.git .publish",
     "add-dev-data-submodule-SAMPLE": "echo --Add .dev-data submodule-- && ( test ! -d .dev-data || git rm -rf .dev-data ) && git submodule add -f git@github.com:lilliputten/django-test-1902-dev-data.git .dev-data",
     "add-templates-submodule-SAMPLE": "echo --Add .bem/templates submodule-- && ( test ! -d .bem/templates || git rm -rf .bem/templates ) && git submodule add -f git@github.com:lilliputten/bem-templates-react-ts-v1.git .bem/templates",
     "postinstall-SAMPLE": "echo --Run postinstall tasks-- && npm-run-all install-patches add-templates-submodule add-dev-data-submodule add-publish-submodule",
+    "[django]": "Django commands...",
     "venv-wrapper-init": "mkvirtualenv django-test-1902",
     "venv-wrapper": "workon django-test-1902",
     "venv-init": "virtualenv .venv",
@@ -44,12 +57,17 @@
     "install-requirements": "pip install -r requirements.txt",
     "django-server": "echo --Start django development server-- && python manage.py runserver",
     "django-migrate": "echo --Apply migrations-- && python manage.py migrate",
-    "django-polls-SAMPLE": "echo ...Sample polls app commands...",
+    "[django-polls]": "...Sample polls app commands...",
     "django-polls-startapp-SAMPLE": "python manage.py startapp polls",
     "django-polls-makemigrations-SAMPLE": "echo --Make migrations (polls)-- && python manage.py makemigrations polls",
     "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
     "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
     "django-createsuperuser": "python manage.py createsuperuser",
+    "[webpack]": "Webpack commands",
+    "server": "webpack-dev-server --mode development --hot",
+    "build-dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "[utils]": "Misc helper utils...",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }
 }

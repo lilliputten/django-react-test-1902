@@ -10,8 +10,15 @@ Django:
 
 React/Webpack/Django:
 
+- [Tutorial: How to set up React, webpack, and Babel 7 from scratch (2019)](https://www.valentinog.com/blog/react-webpack-babel/)
+- [Using Webpack transparently with Django + hot reloading React components as a bonus](https://owais.lone.pw/blog/webpack-plus-reactjs-and-django/)
 - [Setting Up Server Side Rendering with React, Redux, and Django](https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705)
 - [Reconciling Backend Templates with Frontend Components](https://hackernoon.com/reconciling-djangos-mvc-templates-with-react-components-3aa986cf510a)
+
+Webpack:
+
+- [Concepts](https://webpack.js.org/concepts/)
+- [Command Line Interface](https://webpack.js.org/api/cli/)
 
 React REST:
 

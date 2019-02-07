@@ -1,4 +1,5 @@
 flake8
 pylint
 Django==1.11.18
+django-webpack-loader
 nodejs

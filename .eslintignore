@@ -2,7 +2,6 @@
 # Config, content and system-related stuff...
 .*
 node_modules/
-assets/
 public/
 build/
 utils/
