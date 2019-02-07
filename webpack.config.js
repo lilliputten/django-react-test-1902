@@ -43,6 +43,23 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          // require.resolve('extract-loader'), // ???
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[name]_[local]_[hash:base64]',
+            },
+          },
+        ],
+      },
+      // postcss
     ],
   },
 
