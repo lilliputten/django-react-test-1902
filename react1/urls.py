@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^env_test/$', views.env_test, name='env_test'),
     url(r'^node_test/$', views.node_test, name='node_test'),
     url(r'^node_stdin/$', views.node_stdin, name='node_stdin'),
+    url(r'^node_pass_json/$', views.node_pass_json, name='node_pass_json'),
 ]

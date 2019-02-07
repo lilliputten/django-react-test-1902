@@ -1,20 +1,10 @@
 # -*- coding:utf-8 -*-
 
-# from django.shortcuts import render
-
-# from django.http import Http404
-from django.http import HttpResponse
-# from django.template import loader
-# from django.shortcuts import get_object_or_404, render
-# from .models import Question
-
-import os.path
-
-import subprocess
-# from nodejs.bindings import node_run
-
 import django
-
+from django.http import HttpResponse
+import os.path
+import subprocess
+import json
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
@@ -31,6 +21,8 @@ def index(request):
         '<ul>\n' +
         '<li><a href="env_test">env_test</a></li>\n' +
         '<li><a href="node_test">node_test</a></li>\n' +
+        '<li><a href="node_stdin">node_stdin</a></li>\n' +
+        '<li><a href="node_pass_json">node_pass_json</a></li>\n' +
         '</ul>'
     )
 
@@ -67,12 +59,35 @@ def node_stdin(request):
         ['node', script_name],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE
+        stderr=subprocess.PIPE,
     )
     input_data = b'test input\n'
     output, err = p.communicate(input=input_data)
     output = 'Script: ' + script_name + '\nResult: ' + output + '\n'
     if err:
         output += 'Error: ' + err
-    output = '<h1>node_test</h1>' + '<pre>' + output + '</pre>'
+    output = '<h1>node_stdin</h1>' + '<pre>' + output + '</pre>'
+    return HttpResponse(output)
+
+
+def node_pass_json(request):
+    script_name = os.path.join(SITE_ROOT, 'react1', 'node-pass-json.js')
+    p = subprocess.Popen(
+        ['node', script_name],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    data = {
+        'president': {
+            'name': 'Zaphod Beeblebrox',
+            'species': 'Betelgeusian',
+        }
+    }
+    json_data = json.dumps(data)
+    output, err = p.communicate(input=json_data)
+    output = 'Script: ' + script_name + '\nResult:\n' + output + '\n'
+    if err:
+        output += 'Error: ' + err
+    output = '<h1>node_pass_json</h1>' + '<pre>' + output + '</pre>'
     return HttpResponse(output)
