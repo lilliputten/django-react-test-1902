@@ -4,7 +4,7 @@
  * @module webpack.config
  * @see https://webpack.js.org/configuration/
  * @since 2019.02.07, 22:56
- * @version 2019.02.07, 22:56
+ * @version 2019.02.09, 02:52
  */
 
 const path = require('path');
@@ -23,27 +23,28 @@ module.exports = {
 
   entry: './src/index',
 
+  // NOTE: Sourcemaps in dev-tools mode...
   devtool: 'cheap-module-source-map',
 
-  output: {
+  /*{{{*/output: {
       path: bundlesPath,
       filename: '[name]-[hash:8].js',
       sourceMapFilename: '[file].map',
-  },
+  },/*}}}*/
 
-  resolve: {
+  /*{{{*/resolve: {
     modules: [
       'node_modules',
       path.resolve(__dirname, 'app'),
     ],
     extensions: ['.js', '.json', '.jsx', '.css'],
-  },
+  },/*}}}*/
 
-  devServer: {
+  /*{{{*/devServer: {
     contentBase: path.join(__dirname, 'src'),
     compress: true,
     port: 8080,
-  },
+  },/*}}}*/
 
   /*{{{*/module: {
     rules: [
@@ -96,6 +97,13 @@ module.exports = {
   },/*}}}*/
 
   /*{{{*/plugins: [
+    // new webpack.DefinePlugin({
+    //   // Macro substitutions?
+    //   'process.env': {
+    //     testVar: JSON.stringify('test'), // ???
+    //     // NODE_ENV: JSON.stringify('development'), // Automatically passed by webpack
+    //   }
+    // }),
     new CleanWebpackPlugin(
       [
         path.join(bundlesPath, '**/*'),

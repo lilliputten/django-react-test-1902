@@ -62,7 +62,7 @@ workon django-test-1902
 virtualenv .venv
 call .venv/Scripts/activate
 pip install -r requirements.txt
-pip install Django==1.8.19
+pip install Django==1.11.18
 pip freeze django
 django-admin --version
 python manage.py startapp testapp
