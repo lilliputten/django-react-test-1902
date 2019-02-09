@@ -45,6 +45,7 @@
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
     "webpack": "^4.29.3",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
@@ -88,6 +89,8 @@
     "server": "echo --Webpack development server-- && webpack-dev-server --mode development",
     "build-dev": "echo --Webpack build (development mode)-- && webpack --mode development",
     "build": "echo --Webpack build-- && webpack --mode production",
+    "webpack-stats": "echo --Generate webpack stats-- && webpack --profile --json > webpack-stats.json && echo OK",
+    "webpack-stats-analyze": "echo --Analyze webpack stats-- && webpack-bundle-analyzer webpack-stats.json && echo OK",
     "[utils]": "Misc helper utils...",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }

@@ -14,6 +14,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractCssPlugin = require('mini-css-extract-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const bundlesPath = path.resolve('./bundles');
 
@@ -21,23 +22,28 @@ module.exports = {
 
   context: __dirname,
 
-  entry: './src/index',
+  entry: {
+    extra: './src/extra',
+    main: './src/main',
+  },
 
   // NOTE: Sourcemaps in dev-tools mode...
   devtool: 'cheap-module-source-map',
-
-  /*{{{*/output: {
-      path: bundlesPath,
-      filename: '[name]-[hash:8].js',
-      sourceMapFilename: '[file].map',
-  },/*}}}*/
 
   /*{{{*/resolve: {
     modules: [
       'node_modules',
       path.resolve(__dirname, 'app'),
     ],
+    // TODO: Add '.ts', '.tsx'?
     extensions: ['.js', '.json', '.jsx', '.css'],
+  },/*}}}*/
+
+  /*{{{*/output: {
+      path: bundlesPath,
+      filename: '[name]-[hash:8].js',
+      // chunkFilename: '[name].js',
+      // sourceMapFilename: '[file].map',
   },/*}}}*/
 
   /*{{{*/devServer: {
@@ -117,15 +123,61 @@ module.exports = {
     ),
     new HtmlWebPackPlugin({
       inject: true,
-      template: './src/index.html',
+      template: './src/local-public/index.html',
       // filename: './index.html',
     }),
     new BundleTracker({
-      filename: './webpack-stats.json',
+      filename: './webpack-tracker.json',
     }),
     new ExtractCssPlugin({
       filename: '[name]-[contenthash:8].css',
     }),
+    // new BundleAnalyzerPlugin({
+    //   // see: https://github.com/webpack-contrib/webpack-bundle-analyzer
+    //   analyzerMode: 'static',
+    //   openAnalyzer: false,
+    //   reportFilename: 'stats.html',
+    //   generateStatsFile: true,
+    //   statsOptions: {
+    //     // see: https://webpack.js.org/configuration/stats/
+    //     // hash: false,
+    //     source: false,
+    //   },
+    // }),
   ],/*}}}*/
+
+  /*{{{*/optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '-',
+      name: true,
+      cacheGroups: {
+        // vendors: false,
+        vendors: {
+          name: 'vendor',
+          // chunks: 'all',
+          test: /node_modules/,
+          // test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        commons: {
+          name: 'common',
+          chunks: 'initial',
+          minChunks: 2,
+          priority: -20,
+        },
+        // default: {
+        //   minChunks: 2,
+        //   priority: -20,
+        //   reuseExistingChunk: true,
+        // },
+      },
+    },
+  },/*}}}*/
 
 };

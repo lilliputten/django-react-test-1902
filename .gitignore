@@ -21,6 +21,7 @@ log.txt
 \!ARC*
 #*.session
 .publish/
+webpack-stats.json
 
 # Include special jest files/folders
 !__mocks__
