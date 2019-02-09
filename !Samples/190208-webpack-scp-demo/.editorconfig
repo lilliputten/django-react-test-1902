@@ -1,2 +1,2 @@
-[*.js]
+[*.js,*.scss]
 indent_size = 4
