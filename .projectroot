@@ -2,7 +2,7 @@
  vim: ft=markdown:
 -->
 
-# django-test-1902
+# django-react-test-1902
 
 ## Project docs
 
@@ -44,8 +44,8 @@
 
 ```shell
 pip install virtualenv virtualenvwrapper-win
-mkvirtualenv django-test-1902
-workon django-test-1902
+mkvirtualenv django-react-test-1902
+workon django-react-test-1902
 virtualenv .project
 pip install Django==1.8.19
 pip freeze django
