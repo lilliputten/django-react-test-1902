@@ -2,7 +2,7 @@
  vim: ft=markdown:
 -->
 
-# django-test-1902
+# django-react-test-1902
 
 ## Project docs
 
@@ -57,8 +57,8 @@
 
 ```shell
 pip install virtualenv virtualenvwrapper-win
-mkvirtualenv django-test-1902
-workon django-test-1902
+mkvirtualenv django-react-test-1902
+workon django-react-test-1902
 virtualenv .venv
 call .venv/Scripts/activate
 pip install -r requirements.txt
