@@ -16,7 +16,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractCssPlugin = require('mini-css-extract-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const bundlesPath = path.resolve('./bundles');
+const buildPath = path.resolve('./react-build');
 
 module.exports = {
 
@@ -40,7 +40,7 @@ module.exports = {
   },/*}}}*/
 
   /*{{{*/output: {
-      path: bundlesPath,
+      path: buildPath,
       filename: '[name]-[hash:8].js',
       // chunkFilename: '[name].js',
       // sourceMapFilename: '[file].map',
@@ -112,7 +112,7 @@ module.exports = {
     // }),
     new CleanWebpackPlugin(
       [
-        path.join(bundlesPath, '**/*'),
+        path.join(buildPath, '**/*'),
       ],
       {
         exclude: ['.gitkeep'],
