@@ -15,6 +15,14 @@ React/Webpack/Django:
 - [Setting Up Server Side Rendering with React, Redux, and Django](https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705)
 - [Reconciling Backend Templates with Frontend Components](https://hackernoon.com/reconciling-djangos-mvc-templates-with-react-components-3aa986cf510a)
 
+Webpack chunks:
+
+- [Webpack (v4) Code Splitting using SplitChunksPlugin (2018)](https://medium.com/@thatisuday/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312)
+- [thatisuday/webpack-scp-demo: Webpack SplitChunksPlugin Demo](https://github.com/thatisuday/webpack-scp-demo)
+- [Webpack (v4) Code Splitting using SplitChunksPlugin (2018) -- copy](https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312)
+- [Webpack 4 — Mysterious SplitChunks Plugin – DailyJS – Medium](https://medium.com/dailyjs/webpack-4-splitchunks-plugin-d9fbbe091fd0)
+- [Webpack: Creating multiple bundles using entry points - The One True Blog (2015)](http://codys.club/blog/2015/07/04/webpack-create-multiple-bundles-with-entry-points/)
+
 Webpack:
 
 - [Concepts](https://webpack.js.org/concepts/)
