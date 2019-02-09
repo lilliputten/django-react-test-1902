@@ -1,2 +1,2 @@
-# django-test-1902
+# django-react-test-1902
 

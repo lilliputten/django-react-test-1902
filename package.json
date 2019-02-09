@@ -1,12 +1,12 @@
 {
-  "name": "django-test-1902",
-  "demo-server": "http://django-test-1902.lilliputten.ru/",
+  "name": "django-react-test-1902",
+  "demo-server": "http://django-react-test-1902.lilliputten.ru/",
   "version": "0.0.1",
   "author": "lilliputten <igor@lilliputten.ru>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com/lilliputten/django-test-1902"
+    "url": "git@github.com/lilliputten/django-react-test-1902"
   },
   "browserslist": [
     "ie >= 10",
@@ -29,12 +29,12 @@
   },
   "scripts": {
     "install-patches-SAMPLE": "cd \"!Patches\" && pwd && sh ./patch-tool-apply-all && cd ..",
-    "add-publish-submodule-SAMPLE": "echo --Add .publish submodule-- && ( test ! -d .publish || git rm -f .publish ) && git submodule add -f git@github.com:lilliputten/django-test-1902-build.git .publish",
-    "add-dev-data-submodule-SAMPLE": "echo --Add .dev-data submodule-- && ( test ! -d .dev-data || git rm -rf .dev-data ) && git submodule add -f git@github.com:lilliputten/django-test-1902-dev-data.git .dev-data",
+    "add-publish-submodule-SAMPLE": "echo --Add .publish submodule-- && ( test ! -d .publish || git rm -f .publish ) && git submodule add -f git@github.com:lilliputten/django-react-test-1902-build.git .publish",
+    "add-dev-data-submodule-SAMPLE": "echo --Add .dev-data submodule-- && ( test ! -d .dev-data || git rm -rf .dev-data ) && git submodule add -f git@github.com:lilliputten/django-react-test-1902-dev-data.git .dev-data",
     "add-templates-submodule-SAMPLE": "echo --Add .bem/templates submodule-- && ( test ! -d .bem/templates || git rm -rf .bem/templates ) && git submodule add -f git@github.com:lilliputten/bem-templates-react-ts-v1.git .bem/templates",
     "postinstall-SAMPLE": "echo --Run postinstall tasks-- && npm-run-all install-patches add-templates-submodule add-dev-data-submodule add-publish-submodule",
-    "venv-wrapper-init": "mkvirtualenv django-test-1902",
-    "venv-wrapper": "workon django-test-1902",
+    "venv-wrapper-init": "mkvirtualenv django-react-test-1902",
+    "venv-wrapper": "workon django-react-test-1902",
     "venv-init": "virtualenv .venv",
     "venv-activate-call": ".venv/Scripts/activate",
     "install-requirements": "pip install -r requirements.txt",

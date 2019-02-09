@@ -11,7 +11,7 @@ with open(activate_this) as f:
     code = compile(f.read(), activate_this, 'exec')
     exec(code, dict(__file__=activate_this))
 
-sys.path.insert(1,'/home/g/goldenjeru/lilliputten.ru/django-test-1902/')
+sys.path.insert(1,'/home/g/goldenjeru/lilliputten.ru/django-react-test-1902/')
 
 import django
 
