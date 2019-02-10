@@ -111,11 +111,18 @@ module.exports = {
         test: /\.(pcss|css)$/,
         // loader: 'css-loader!csso-loader',
         use: [
+          {
+            loader: require.resolve('css-hot-loader'),
+            options: {
+              // reloadAll: true,
+              cssModule: true,
+            },
+          },
           ExtractCssPlugin.loader,
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1,
+              // importLoaders: 1,
               sourceMap: true,
             },
           },
