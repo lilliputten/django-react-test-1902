@@ -1,1 +1,0 @@
-{"version":3,"file":"Contacts-d6849147.js","sources":["webpack:///./react-src/components/pages/Contacts/Contacts.jsx"],"sourcesContent":["import * as React from 'react';\n\nconst Contacts = () => {\n  return (\n    <div className=\"Contacts\">\n      Contacts\n    </div>\n  );\n};\n\nexport default Contacts;\n"],"mappings":"AAAA","sourceRoot":""}

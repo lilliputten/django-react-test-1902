@@ -3,10 +3,10 @@
   "chunks": {
     "About": [
       {
-        "name": "About-d6849147.js"
+        "name": "About-3940724c.js"
       },
       {
-        "name": "About-d6849147.js.map"
+        "name": "About-3940724c.js.map"
       }
     ],
     "App": [
@@ -14,37 +14,37 @@
         "name": "App-9c5fd435.css"
       },
       {
-        "name": "App-d6849147.js"
+        "name": "App-c0c66e48.js"
       },
       {
         "name": "App-9c5fd435.css.map"
       },
       {
-        "name": "App-d6849147.js.map"
+        "name": "App-c0c66e48.js.map"
       }
     ],
     "Contacts": [
       {
-        "name": "Contacts-d6849147.js"
+        "name": "Contacts-23f37762.js"
       },
       {
-        "name": "Contacts-d6849147.js.map"
+        "name": "Contacts-23f37762.js.map"
       }
     ],
     "Home": [
       {
-        "name": "Home-d6849147.js"
+        "name": "Home-ddb7c1f6.js"
       },
       {
-        "name": "Home-d6849147.js.map"
+        "name": "Home-ddb7c1f6.js.map"
       }
     ],
     "Vendor": [
       {
-        "name": "Vendor-d6849147.js"
+        "name": "Vendor-27eac248.js"
       },
       {
-        "name": "Vendor-d6849147.js.map"
+        "name": "Vendor-27eac248.js.map"
       }
     ]
   }
