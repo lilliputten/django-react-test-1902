@@ -29,9 +29,9 @@ const AsyncContactsPage = loadable({
 
 const App = ({ mode }) => {
   // TODO: `NODE_ENV` must be in config!
-  const NODE_ENV = process.env.NODE_ENV;
-  console.log('App: NODE_ENV', NODE_ENV);
-  console.log('App mode', mode);
+  // const NODE_ENV = process.env.NODE_ENV;
+  // console.log('App: NODE_ENV', NODE_ENV);
+  // console.log('App mode', mode);
   // debugger;
   return (
     <BrowserRouter>
