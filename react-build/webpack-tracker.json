@@ -1,1 +1,51 @@
-{"status":"done","chunks":{"About":[{"name":"About-142cefbe.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\About-142cefbe.js"},{"name":"About-142cefbe.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\About-142cefbe.js.map"}],"App":[{"name":"App-61d350dc.css","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\App-61d350dc.css"},{"name":"App-142cefbe.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\App-142cefbe.js"},{"name":"App-61d350dc.css.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\App-61d350dc.css.map"},{"name":"App-142cefbe.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\App-142cefbe.js.map"}],"Contacts":[{"name":"Contacts-142cefbe.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Contacts-142cefbe.js"},{"name":"Contacts-142cefbe.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Contacts-142cefbe.js.map"}],"Home":[{"name":"Home-142cefbe.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Home-142cefbe.js"},{"name":"Home-142cefbe.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Home-142cefbe.js.map"}],"Vendor":[{"name":"Vendor-142cefbe.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Vendor-142cefbe.js"},{"name":"Vendor-142cefbe.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\Vendor-142cefbe.js.map"}]}}
+{
+  "status": "done",
+  "chunks": {
+    "About": [
+      {
+        "name": "About-171ffd38.js"
+      },
+      {
+        "name": "About-171ffd38.js.map"
+      }
+    ],
+    "App": [
+      {
+        "name": "App-8d11d94f.css"
+      },
+      {
+        "name": "App-171ffd38.js"
+      },
+      {
+        "name": "App-8d11d94f.css.map"
+      },
+      {
+        "name": "App-171ffd38.js.map"
+      }
+    ],
+    "Contacts": [
+      {
+        "name": "Contacts-171ffd38.js"
+      },
+      {
+        "name": "Contacts-171ffd38.js.map"
+      }
+    ],
+    "Home": [
+      {
+        "name": "Home-171ffd38.js"
+      },
+      {
+        "name": "Home-171ffd38.js.map"
+      }
+    ],
+    "Vendor": [
+      {
+        "name": "Vendor-171ffd38.js"
+      },
+      {
+        "name": "Vendor-171ffd38.js.map"
+      }
+    ]
+  }
+}
