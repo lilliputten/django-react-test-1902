@@ -23,8 +23,8 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    extra: './src/extra',
-    main: './src/main',
+    extra: './react-src/extra',
+    main: './react-src/main',
   },
 
   // NOTE: Sourcemaps in dev-tools mode...
@@ -47,7 +47,7 @@ module.exports = {
   },/*}}}*/
 
   /*{{{*/devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, 'react-src'),
     compress: true,
     port: 8080,
   },/*}}}*/
@@ -123,11 +123,10 @@ module.exports = {
     ),
     new HtmlWebPackPlugin({
       inject: true,
-      template: './src/local-public/index.html',
-      // filename: './index.html',
+      template: './react-src/local-public/index.html',
     }),
     new BundleTracker({
-      filename: './webpack-tracker.json',
+      filename: path.join(buildPath, 'webpack-tracker.json'),
     }),
     new ExtractCssPlugin({
       filename: '[name]-[contenthash:8].css',
