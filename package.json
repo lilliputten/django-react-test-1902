@@ -42,6 +42,7 @@
     "postcss-csso": "^3.0.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
+    "react-loadable": "^5.5.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
     "webpack": "^4.29.3",
@@ -89,8 +90,8 @@
     "server": "echo --Webpack development server-- && webpack-dev-server --mode development",
     "build-dev": "echo --Webpack build (development mode)-- && webpack --mode development",
     "build": "echo --Webpack build-- && webpack --mode production",
-    "webpack-stats": "echo --Generate webpack stats-- && webpack --profile --json > webpack-stats.json && echo OK",
-    "webpack-stats-analyze": "echo --Analyze webpack stats-- && webpack-bundle-analyzer webpack-stats.json && echo OK",
+    "webpack-stats": "echo --Generate webpack stats-- && webpack --profile --json > .webpack-stats.json",
+    "webpack-stats-analyze": "echo --Analyze webpack stats-- && webpack-bundle-analyzer .webpack-stats.json",
     "[utils]": "Misc helper utils...",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }
