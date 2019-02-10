@@ -88,7 +88,7 @@ module.exports = (env, argv) => {
 
     /*{{{*/output: {
         path: buildPath,
-        filename: '[name]-[hash:8].js',
+        filename: '[name]-[contenthash:8].js',
         // chunkFilename: '[name].js',
         // sourceMapFilename: '[file].map',
     },/*}}}*/
