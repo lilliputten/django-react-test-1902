@@ -12,7 +12,7 @@ const path = require('path');
 // const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractCssPlugin = require('mini-css-extract-plugin');
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -111,13 +111,14 @@ module.exports = {
         test: /\.(pcss|css)$/,
         // loader: 'css-loader!csso-loader',
         use: [
-          {
-            loader: require.resolve('css-hot-loader'),
-            options: {
-              // reloadAll: true,
-              cssModule: true,
-            },
-          },
+          // {
+          //   // loader: require.resolve('css-hot-loader'),
+          //   loader: require.resolve('webpack-extract-css-hot-reload'),
+          //   options: {
+          //     // reloadAll: true,
+          //     cssModule: true,
+          //   },
+          // },
           ExtractCssPlugin.loader,
           {
             loader: require.resolve('css-loader'),
@@ -147,17 +148,17 @@ module.exports = {
     //     // NODE_ENV: JSON.stringify('development'), // Automatically passed by webpack
     //   }
     // }),
-    new CleanWebpackPlugin(
-      [
-        path.join(buildPath, '**/*'),
-      ],
-      {
-        exclude: ['.gitkeep'],
-        verbose: true,
-        beforeEmit: true,
-        // dry: false,
-      }
-    ),
+    // new CleanWebpackPlugin(
+    //   [
+    //     path.join(buildPath, '**/*'),
+    //   ],
+    //   {
+    //     exclude: ['.gitkeep'],
+    //     verbose: true,
+    //     beforeEmit: true,
+    //     // dry: false,
+    //   }
+    // ),
     new HtmlWebPackPlugin({
       inject: true,
       template: './react-src/local-public/index.html',
