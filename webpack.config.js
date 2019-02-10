@@ -18,6 +18,47 @@ const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const buildPath = path.resolve('./react-build');
+// const srcPath = path.resolve('./react-src');
+
+  /** postcssPlugins ** {{{ */
+const postcssPlugins = [
+    // Necessary for external CSS imports to work
+    // https://github.com/facebookincubator/create-react-app/issues/2677
+    require('postcss-flexbugs-fixes'),
+    require('postcss-import'),
+    require('postcss-mixins')({
+      // mixinsDir: path.join(srcPath, 'components', '!mixins'),
+    }), // https://github.com/postcss/postcss-mixins
+    // require('postcss-random'), // https://www.npmjs.com/package/postcss-random
+    // require('postcss-each'),
+    // require('postcss-for'),
+    // require('postcss-define-function'), // https://github.com/titancat/postcss-define-function
+    require('postcss-advanced-variables')({ // https://github.com/jonathantneal/postcss-advanced-variables
+      // unresolved: 'warn', // 'ignore',
+      // variables: configCss,
+    }),
+    require('postcss-simple-vars'), // https://github.com/postcss/postcss-simple-vars
+    // require('postcss-conditionals'), // Already used (scss?)
+    require('postcss-color-function'), // https://github.com/postcss/postcss-color-function
+    require('postcss-calc')(),
+    require('postcss-nested-ancestors'), // https://github.com/toomuchdesign/postcss-nested-ancestors
+    require('postcss-nested'),
+    // require('postcss-current-selector'),
+    // require('rebem-css'),
+    require('postcss-url')({ url: 'rebase' }),
+    // require('postcss-reporter')(),
+    require('autoprefixer')({
+      browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9', // React doesn't support IE8 anyway
+      ],
+      flexbox: 'no-2009',
+    }),
+    require('postcss-csso'),
+    require('postcss-reporter'),
+  ];/*}}}*/
 
 module.exports = {
 
@@ -37,7 +78,7 @@ module.exports = {
       path.resolve(__dirname, 'app'),
     ],
     // TODO: Add '.ts', '.tsx'?
-    extensions: ['.js', '.json', '.jsx', '.css'],
+    extensions: ['.js', '.json', '.jsx', '.css', '.pcss'],
   },/*}}}*/
 
   /*{{{*/output: {
@@ -67,7 +108,7 @@ module.exports = {
         },
       },/*}}}*/
       /*{{{ css */{
-        test: /\.css$/,
+        test: /\.(pcss|css)$/,
         // loader: 'css-loader!csso-loader',
         use: [
           ExtractCssPlugin.loader,
@@ -81,22 +122,9 @@ module.exports = {
           {
             loader: require.resolve('postcss-loader'),
             options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
               ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                require('autoprefixer')({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-                require('postcss-csso'),
-              ],
+              parser: require('postcss-scss'),
+              plugins: () => postcssPlugins,
             },
           },
         ],
