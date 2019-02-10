@@ -1,1 +1,0 @@
-{"version":3,"file":"Home-171ffd38.js","sources":["webpack:///./react-src/components/pages/Home/Home.jsx"],"sourcesContent":["import * as React from 'react';\n\nconst Home = () => {\n  return (\n    <div className=\"Home\">\n      Home\n    </div>\n  );\n};\n\nexport default Home;\n"],"mappings":"AAAA","sourceRoot":""}
