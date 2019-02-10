@@ -14,6 +14,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractCssPlugin = require('mini-css-extract-plugin');
+const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const buildPath = path.resolve('./react-build');
@@ -23,8 +24,8 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    extra: './react-src/extra',
-    main: './react-src/main',
+    App: './react-src/index',
+    // main: './react-src/main',
   },
 
   // NOTE: Sourcemaps in dev-tools mode...
@@ -48,6 +49,7 @@ module.exports = {
 
   /*{{{*/devServer: {
     contentBase: path.join(__dirname, 'react-src'),
+    historyApiFallback: true,
     compress: true,
     port: 8080,
   },/*}}}*/
@@ -143,38 +145,42 @@ module.exports = {
     //     source: false,
     //   },
     // }),
+    new AsyncChunkNames(),
   ],/*}}}*/
 
   /*{{{*/optimization: {
     splitChunks: {
-      chunks: 'all',
-      minSize: 0,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '-',
-      name: true,
       cacheGroups: {
-        // vendors: false,
-        vendors: {
-          name: 'vendor',
-          // chunks: 'all',
+        // chunks: 'all',
+        // minSize: 0,
+        // maxSize: 0,
+        // minChunks: 1,
+        // maxAsyncRequests: 5,
+        // maxInitialRequests: 3,
+        // automaticNameDelimiter: '-',
+        // name: true,
+        default: false,
+        vendors: false,
+        // vendor chunk
+        vendor: {
+          // name of the chunk
+          name: 'Vendor',
+          // async + async chunks
+          chunks: 'all',
+          // import file path containing node_modules
           test: /node_modules/,
-          // test: /[\\/]node_modules[\\/]/,
-          priority: -10,
+          // priority
+          priority: 20,
         },
-        commons: {
-          name: 'common',
-          chunks: 'initial',
+        // common chunk
+        common: {
+          name: 'Common',
           minChunks: 2,
-          priority: -20,
+          chunks: 'all',
+          priority: 10,
+          reuseExistingChunk: true,
+          enforce: true,
         },
-        // default: {
-        //   minChunks: 2,
-        //   priority: -20,
-        //   reuseExistingChunk: true,
-        // },
       },
     },
   },/*}}}*/

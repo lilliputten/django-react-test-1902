@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{13:function(e,n,o){},2:function(e,n,o){"use strict";var p=o(0),i=o(4),s=o.n(i),c=(o(13),function(e){var n=e.mode;return console.log("App: NODE_ENV","production"),p.createElement("div",{className:"App"},"App mode: ",n)});c.propTypes={mode:s.a.string.isRequired},n.a=c}}]);
-//# sourceMappingURL=common-345f5963.js.map

@@ -1,1 +1,35 @@
-{"status":"done","chunks":{"common":[{"name":"common-144f5d3b.css","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\common-144f5d3b.css"},{"name":"common-345f5963.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\common-345f5963.js"},{"name":"common-144f5d3b.css.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\common-144f5d3b.css.map"},{"name":"common-345f5963.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\common-345f5963.js.map"}],"vendor":[{"name":"vendor-345f5963.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\vendor-345f5963.js"},{"name":"vendor-345f5963.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\vendor-345f5963.js.map"}],"extra":[{"name":"extra-345f5963.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\extra-345f5963.js"},{"name":"extra-345f5963.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\extra-345f5963.js.map"}],"main":[{"name":"main-345f5963.js","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\main-345f5963.js"},{"name":"main-345f5963.js.map","path":"D:\\Work\\My\\Django\\django-react-test-1902\\react-build\\main-345f5963.js.map"}]}}
+{
+  "status": "done",
+  "chunks": {
+    "App": [
+      {
+        "name": "App-144f5d3b.css"
+      },
+      {
+        "name": "App-50a84122.js"
+      },
+      {
+        "name": "App-144f5d3b.css.map"
+      },
+      {
+        "name": "App-50a84122.js.map"
+      }
+    ],
+    "Home": [
+      {
+        "name": "Home-50a84122.js"
+      },
+      {
+        "name": "Home-50a84122.js.map"
+      }
+    ],
+    "Vendor": [
+      {
+        "name": "Vendor-50a84122.js"
+      },
+      {
+        "name": "Vendor-50a84122.js.map"
+      }
+    ]
+  }
+}
