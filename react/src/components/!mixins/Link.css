@@ -1,0 +1,17 @@
+@define-mixin Link $color: $defaultLinkColor, $hoverColor: null, $hoverUnderline: true {
+  a {
+    color: $color;
+    text-decoration: none;
+  }
+  a:hover {
+    @if $hoverColor == null {
+      color: color($color alpha(-20%));
+    }
+    @else {
+      color: $hoverColor;
+    }
+    @if $hoverUnderline {
+      text-decoration: underline;
+    }
+  }
+}
