@@ -1,5 +1,6 @@
-flake8
-pylint
 Django==1.11.18
 django-webpack-loader
+nodeenv
+flake8
+pylint
 nodejs

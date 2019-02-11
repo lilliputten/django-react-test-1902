@@ -111,5 +111,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'), # We do this so that django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+    # We do this so that django's collectstatic copies or our bundles
+    # to the STATIC_ROOT or syncs them to whatever storage we use.
+    os.path.join(BASE_DIR, 'assets'),
 )
