@@ -22,8 +22,12 @@ module.exports = (env, argv) => {
   const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
   // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-  const buildPath = path.resolve('./react-build');
-  // const srcPath = path.resolve('./react-src');
+  // const rootPath = path.resolve('./');
+  const appBase = path.resolve('./react');
+  const buildPath = path.resolve('./react/build');
+  const srcPath = path.resolve('./react/src');
+
+  const htmlTemplate = './react/src/index.html';
 
     /** postcssPlugins ** {{{ */
   const postcssPlugins = [
@@ -32,7 +36,7 @@ module.exports = (env, argv) => {
       require('postcss-flexbugs-fixes'),
       require('postcss-import'),
       require('postcss-mixins')({
-        // mixinsDir: path.join(srcPath, 'components', '!mixins'),
+        mixinsDir: path.join(srcPath, 'components', '!mixins'),
       }), // https://github.com/postcss/postcss-mixins
       // require('postcss-random'), // https://www.npmjs.com/package/postcss-random
       // require('postcss-each'),
@@ -65,12 +69,14 @@ module.exports = (env, argv) => {
       require('postcss-reporter'),
     ];/*}}}*/
 
+  const bundleName = (ext) => '[name]' + (isProd ? '-[contenthash:8]' : '') + ext;
+
   return {
 
     context: __dirname,
 
     entry: {
-      App: './react-src/index',
+      App: './react/src/index',
       // main: './react-src/main',
     },
 
@@ -88,16 +94,40 @@ module.exports = (env, argv) => {
 
     /*{{{*/output: {
         path: buildPath,
-        filename: '[name]-[contenthash:8].js',
-        // chunkFilename: '[name].js',
-        // sourceMapFilename: '[file].map',
+        filename: bundleName('.js'),
     },/*}}}*/
 
     /*{{{*/devServer: {
-      contentBase: path.join(__dirname, 'react-src'),
+      // contentBase: path.join(__dirname, 'react-src'),
+      contentBase: appBase,
+      watchContentBase: true,
+      // hot: true,
       historyApiFallback: true,
       compress: true,
       port: 8080,
+      // /*{{{*/before(app) {
+      //   // app.use(errorOverlayMiddleware());
+      //   // app.use(noopServiceWorkerMiddleware());
+      //
+      //   // // Fake response demo:
+      //   // app.get('/site/fake.json', function(req, res) {
+      //   //   res.json({ fake: 'response' });
+      //   // });
+      //
+      //   // Serve raw files:
+      //   const fs = require('fs');
+      //   app.get('/static/*', function(req, res) {
+      //     let file = String(req.path).substr(1); // strip leading slash
+      //     file = path.join(rootPath, file);
+      //     console.log('XXX', file);
+      //     let buf = fs.readFileSync(file);
+      //     // Return binary content:
+      //     res.end(buf, 'binary'); // 'utf-8'));
+      //     // Alt: return text content:
+      //     // res.send(buf && buf.toString()); // 'utf-8'));
+      //   });
+      //
+      // },/*}}}*/
     },/*}}}*/
 
     /*{{{*/module: {
@@ -165,12 +195,12 @@ module.exports = (env, argv) => {
           // dry: false,
         }
       ),
-      isDev && new HtmlWebPackPlugin({
+      /* isDev && */ new HtmlWebPackPlugin({
         inject: true,
-        template: './react-src/local-public/index.html',
+        template: htmlTemplate,
       }),
       new ExtractCssPlugin({
-        filename: '[name]-[contenthash:8].css',
+        filename: bundleName('.css'),
       }),
       isProd && new BundleTracker({
         filename: path.join(buildPath, 'webpack-tracker.json'),

@@ -37,6 +37,7 @@ const App = ({ mode }) => {
     <BrowserRouter>
       <div className="App" id={mode}>
         <div className="App-Menu">
+          <span className="App-MenuLogo" />
           <Link className="App-MenuItem" activeClassName="active" exact to="/">Home</Link>
           <Link className="App-MenuItem" activeClassName="active" to="/About">About</Link>
           <Link className="App-MenuItem" activeClassName="active" to="/Contacts">Contacts</Link>

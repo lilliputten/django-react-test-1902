@@ -1,0 +1,38 @@
+.App {
+  $default-color: #666;
+  $menu-item-height: 35px;
+  color: $default-color;
+  &-Menu {
+    margin: 5px;
+    $link-color: #09f;
+    @mixin clearfix;
+    // @mixin debug;
+    &Logo,
+    &Item {
+      margin: 5px;
+      display: block;
+      float: left;
+      height: $menu-item-height;
+      line-height: $menu-item-height;
+    }
+    &Logo {
+      margin-left: 0;
+      background-image: url('/static/images/logo/logo.svg');
+      background-size: 100% 100%;
+      width: $menu-item-height;
+    }
+    &Item {
+      color: $link-color;
+      text-decoration: none;
+      &.active {
+        color: color($link-color shade(30));
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &-Page {
+    margin: 10px;
+  }
+}
