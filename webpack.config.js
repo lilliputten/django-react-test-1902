@@ -98,10 +98,10 @@ module.exports = (env, argv) => {
     },/*}}}*/
 
     /*{{{*/devServer: {
-      // contentBase: path.join(__dirname, 'react-src'),
+      // @see:
+      // - [Multiple Entry Points · Issue #141 · gaearon/react-hot-loader](https://github.com/gaearon/react-hot-loader/issues/141)
       contentBase: appBase,
       watchContentBase: true,
-      // hot: true,
       historyApiFallback: true,
       compress: true,
       port: 8080,
