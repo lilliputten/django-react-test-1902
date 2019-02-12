@@ -96,6 +96,7 @@
     "django-polls-sqlmigrate-SAMPLE": "echo --Show migration in SQL format (polls:0001)-- && python manage.py sqlmigrate polls 0001",
     "django-makemigrations": "echo --Make migrations-- && python manage.py makemigrations",
     "django-createsuperuser": "python manage.py createsuperuser",
+    "django-collectstatic": "python manage.py collectstatic --noinput",
     "[tests]": "Testing & linting...",
     "stylelint": "echo --Postcss linting-- && stylelint src/**/*.css --syntax scss && echo No postcss problems found",
     "eslint": "echo --JS source code linting-- && eslint . --ext .js,.jsx && echo No JS problems found",
