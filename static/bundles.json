@@ -3,48 +3,48 @@
   "chunks": {
     "About": [
       {
-        "name": "About-3940724c.js"
+        "name": "About-c115ae29.js"
       },
       {
-        "name": "About-3940724c.js.map"
+        "name": "About-c115ae29.js.map"
       }
     ],
     "App": [
       {
-        "name": "App-a1ed3844.css"
+        "name": "App-d4374d22.css"
       },
       {
-        "name": "App-250d1e95.js"
+        "name": "App-e6d61a5c.js"
       },
       {
-        "name": "App-a1ed3844.css.map"
+        "name": "App-d4374d22.css.map"
       },
       {
-        "name": "App-250d1e95.js.map"
+        "name": "App-e6d61a5c.js.map"
       }
     ],
     "Contacts": [
       {
-        "name": "Contacts-23f37762.js"
+        "name": "Contacts-dc6920bb.js"
       },
       {
-        "name": "Contacts-23f37762.js.map"
+        "name": "Contacts-dc6920bb.js.map"
       }
     ],
     "Home": [
       {
-        "name": "Home-ddb7c1f6.js"
+        "name": "Home-48c5ff23.js"
       },
       {
-        "name": "Home-ddb7c1f6.js.map"
+        "name": "Home-48c5ff23.js.map"
       }
     ],
     "Vendor": [
       {
-        "name": "Vendor-27eac248.js"
+        "name": "Vendor-951d7a37.js"
       },
       {
-        "name": "Vendor-27eac248.js.map"
+        "name": "Vendor-951d7a37.js.map"
       }
     ]
   }
