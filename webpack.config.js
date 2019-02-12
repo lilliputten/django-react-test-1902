@@ -15,6 +15,7 @@ module.exports = (env, argv) => {
 
   const path = require('path');
 
+  // https://webpack.js.org/plugins/internal-plugins/
   // const webpack = require('webpack');
   const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -219,6 +220,13 @@ module.exports = (env, argv) => {
         new UglifyJsPlugin({
           test: /\.js(\?.*)?$/i,
           sourceMap: true,
+          // https://github.com/webpack-contrib/uglifyjs-webpack-plugin#uglifyoptions
+          uglifyOptions: {
+            // https://github.com/mishoo/UglifyJS2#compressor-options%23compressor-options
+            compress: {
+              drop_debugger: false,
+            },
+          },
         }),
       ],
       splitChunks: {
