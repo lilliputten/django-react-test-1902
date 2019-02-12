@@ -20,8 +20,19 @@ from django.views.generic.base import RedirectView
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
+
+class BundlesRedirect(RedirectView):  # Redirects to webpack bundles
+
+    permanent = True
+    query_string = True
+
+    def get_redirect_url(self, url):
+        return '/static/bundles/' + url
+
+
 urlpatterns = [
     url(r'^favicon\.ico$', favicon_view),
+    url(r'^([^/]*\.(?:js|css))$', BundlesRedirect.as_view(), name='bundles'),
     url(r'^react_test/', include('react_test.urls', namespace="react_test")),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
