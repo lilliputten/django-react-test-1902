@@ -271,7 +271,7 @@ var App = function App(_ref) {var mode = _ref.mode;
   // TODO: `NODE_ENV` must be in config!
   // const NODE_ENV = process.env.NODE_ENV;
   // console.log('App: NODE_ENV', NODE_ENV);
-  // console.log('App mode', mode);
+  console.log('App mode', mode);
   debugger;
   return (
     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null,
@@ -337,4 +337,4 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /***/ })
 
 /******/ });
-//# sourceMappingURL=App-e6d61a5c.js.map
+//# sourceMappingURL=App-78fe3f51.js.map
