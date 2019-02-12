@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,10 +7,13 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>React Webpack Sample</title>
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Example</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
   </head>
+
   <body>
     <div class="AppContainer" id="AppContainer"></div>
+    {% render_bundle 'Vendor' %}
+    {% render_bundle 'App' %}
   </body>
 </html>

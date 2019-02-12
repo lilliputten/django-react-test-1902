@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
 import django
+# from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse
 import os.path
 import subprocess
@@ -14,16 +16,18 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
 def index(request):
     # # DEBUG!
     # f = open(os.path.join(SITE_ROOT, 'django.log'), 'a+')
-    # f.write('react1 index log\n')
+    # f.write('react_test index log\n')
     # f.close()
     return HttpResponse(
-        '<h1>react1 tests</h1>\n'
+        '<h1>react_test</h1>\n'
         '<ol>\n' +
         '<li><a href="env_test">env_test</a></li>\n' +
         '<li><a href="node_test">node_test</a></li>\n' +
         '<li><a href="node_stdin">node_stdin</a></li>\n' +
         '<li><a href="node_pass_json">node_pass_json</a></li>\n' +
         '<li><a href="node_change_json">node_change_json</a></li>\n' +
+        '<li><a href="simple_template">simple_template</a></li>\n' +
+        '<li><a href="webpack_template">webpack_template</a></li>\n' +
         '</ol>'
     )
 
@@ -44,7 +48,7 @@ def env_test(request):
 
 
 def node_test(request):
-    script_name = os.path.join(SITE_ROOT, 'react1', 'node-test.js')
+    script_name = os.path.join(SITE_ROOT, 'react_test', 'node-test.js')
     p = subprocess.Popen(['node', script_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, err = p.communicate()
     output = 'Script: ' + script_name + '\nResult: ' + output + '\n'
@@ -55,7 +59,7 @@ def node_test(request):
 
 
 def node_stdin(request):
-    script_name = os.path.join(SITE_ROOT, 'react1', 'node-stdin.js')
+    script_name = os.path.join(SITE_ROOT, 'react_test', 'node-stdin.js')
     p = subprocess.Popen(
         ['node', script_name],
         stdin=subprocess.PIPE,
@@ -72,7 +76,7 @@ def node_stdin(request):
 
 
 def node_pass_json(request):
-    script_name = os.path.join(SITE_ROOT, 'react1', 'node-pass-json.js')
+    script_name = os.path.join(SITE_ROOT, 'react_test', 'node-pass-json.js')
     p = subprocess.Popen(
         ['node', script_name],
         stdin=subprocess.PIPE,
@@ -95,7 +99,7 @@ def node_pass_json(request):
 
 
 def node_change_json(request):
-    script_name = os.path.join(SITE_ROOT, 'react1', 'node-change-json.js')
+    script_name = os.path.join(SITE_ROOT, 'react_test', 'node-change-json.js')
     p = subprocess.Popen(
         ['node', script_name],
         stdin=subprocess.PIPE,
@@ -114,3 +118,11 @@ def node_change_json(request):
         output += 'Error: ' + err + '\n'
     output = '<h1>node_change_json</h1>' + '<pre>' + output + '</pre>'
     return HttpResponse(output)
+
+
+def simple_template(request):
+    return render(request, 'react_test/simple_template.html', {'test': 'test1'})
+
+
+def webpack_template(request):
+    return render(request, 'react_test/webpack_template.html', {'test': 'test1'})

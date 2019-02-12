@@ -42,7 +42,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
     'polls',
+    'react_test',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,4 +116,14 @@ STATICFILES_DIRS = (
     # We do this so that django's collectstatic copies or our bundles
     # to the STATIC_ROOT or syncs them to whatever storage we use.
     os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'react', 'build'),
+    os.path.join(BASE_DIR, 'react', 'static'),
 )
+
+# @see https://owais.lone.pw/blog/webpack-plus-reactjs-and-django/
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'react', 'build', 'bundles.json'),
+    }
+}

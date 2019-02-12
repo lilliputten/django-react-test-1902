@@ -32,7 +32,7 @@ const App = ({ mode }) => {
   // const NODE_ENV = process.env.NODE_ENV;
   // console.log('App: NODE_ENV', NODE_ENV);
   // console.log('App mode', mode);
-  // debugger;
+  debugger;
   return (
     <BrowserRouter>
       <div className="App" id={mode}>

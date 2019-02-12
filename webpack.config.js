@@ -9,8 +9,9 @@
 
 module.exports = (env, argv) => {
 
-  const isDev = (argv.mode === 'development');
-  const isProd = !isDev;
+  const isServer = (argv.mode === 'none');
+  // const isDev = (argv.mode === 'development');
+  // const isProd = !isDev;
 
   const path = require('path');
 
@@ -25,6 +26,7 @@ module.exports = (env, argv) => {
   // const rootPath = path.resolve('./');
   const appBase = path.resolve('./react');
   const buildPath = path.resolve('./react/build');
+  const bundlesPath = path.resolve('./react/build/bundles');
   const srcPath = path.resolve('./react/src');
 
   const htmlTemplate = './react/src/index.html';
@@ -69,7 +71,7 @@ module.exports = (env, argv) => {
       require('postcss-reporter'),
     ];/*}}}*/
 
-  const bundleName = (ext) => '[name]' + (isProd ? '-[contenthash:8]' : '') + ext;
+  const bundleName = (ext) => '[name]' + (!isServer ? '-[contenthash:8]' : '') + ext;
 
   return {
 
@@ -77,7 +79,7 @@ module.exports = (env, argv) => {
 
     entry: {
       App: './react/src/index',
-      // main: './react-src/main',
+      // main: './react/src/main',
     },
 
     // NOTE: Sourcemaps in dev-tools mode...
@@ -93,7 +95,7 @@ module.exports = (env, argv) => {
     },/*}}}*/
 
     /*{{{*/output: {
-        path: buildPath,
+        path: bundlesPath,
         filename: bundleName('.js'),
     },/*}}}*/
 
@@ -133,13 +135,16 @@ module.exports = (env, argv) => {
     /*{{{*/module: {
       rules: [
         /*{{{ jsx */{
-          test: /\.jsx?$/,
+          test: /\.(js|jsx)?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
+          // options: {
+          // },
           // cacheable: true,
-          query: {
-              retainLines: true,
-              cacheDirectory: true,
+          options: {
+            // sourceRoot: '/', // srcPath, // './react/src',
+            retainLines: true,
+            cacheDirectory: true,
           },
         },/*}}}*/
         /*{{{ css */{
@@ -184,9 +189,9 @@ module.exports = (env, argv) => {
       //     // NODE_ENV: JSON.stringify('development'), // Automatically passed by webpack
       //   }
       // }),
-      isProd && new CleanWebpackPlugin(
+      !isServer && new CleanWebpackPlugin(
         [
-          path.join(buildPath, '**/*'),
+          path.join(bundlesPath, '**/*'),
         ],
         {
           exclude: ['.gitkeep'],
@@ -202,8 +207,8 @@ module.exports = (env, argv) => {
       new ExtractCssPlugin({
         filename: bundleName('.css'),
       }),
-      isProd && new BundleTracker({
-        filename: path.join(buildPath, 'webpack-tracker.json'),
+      !isServer && new BundleTracker({
+        filename: path.join(buildPath, 'bundles.json'),
       }),
       new AsyncChunkNames(),
     ].filter(x => x),/*}}}*/

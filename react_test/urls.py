@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^node_stdin/$', views.node_stdin, name='node_stdin'),
     url(r'^node_pass_json/$', views.node_pass_json, name='node_pass_json'),
     url(r'^node_change_json/$', views.node_change_json, name='node_change_json'),
+    url(r'^simple_template/$', views.simple_template, name='simple_template'),
+    url(r'^webpack_template/$', views.webpack_template, name='webpack_template'),
 ]
