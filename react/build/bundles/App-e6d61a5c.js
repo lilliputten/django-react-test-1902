@@ -272,7 +272,7 @@ var App = function App(_ref) {var mode = _ref.mode;
   // const NODE_ENV = process.env.NODE_ENV;
   // console.log('App: NODE_ENV', NODE_ENV);
   // console.log('App mode', mode);
-  // debugger;
+  debugger;
   return (
     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null,
     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "App", id: mode },
@@ -337,4 +337,4 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /***/ })
 
 /******/ });
-//# sourceMappingURL=App-d2e3a113.js.map
+//# sourceMappingURL=App-e6d61a5c.js.map
