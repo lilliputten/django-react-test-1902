@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
   const path = require('path');
 
   // const webpack = require('webpack');
+  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const HtmlWebPackPlugin = require('html-webpack-plugin');
   const BundleTracker = require('webpack-bundle-tracker');
   const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -214,6 +215,12 @@ module.exports = (env, argv) => {
     ].filter(x => x),/*}}}*/
 
     /*{{{*/optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          test: /\.js(\?.*)?$/i,
+          sourceMap: true,
+        }),
+      ],
       splitChunks: {
         cacheGroups: {
           // chunks: 'all',
