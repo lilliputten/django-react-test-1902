@@ -55,6 +55,14 @@
         "name": "local-server-8f07ed64.js.map"
       }
     ],
+    "test": [
+      {
+        "name": "test-4c77172f.js"
+      },
+      {
+        "name": "test-4c77172f.js.map"
+      }
+    ],
     "vendor": [
       {
         "name": "vendor-2776a817.js"

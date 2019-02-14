@@ -83,7 +83,7 @@ module.exports = (env, argv) => {
     entry: {
       'local-server': './react/src/local-server',
       'django-render': './react/src/django-render',
-      // main: './react/src/main',
+      'test': './react/src/test',
     },
 
     // NOTE: Sourcemaps in dev-tools mode...
@@ -213,6 +213,7 @@ module.exports = (env, argv) => {
         filename: localHtmlFilename,
         excludeChunks: [
           'django-render',
+          'test',
         ],
       }),
       new ExtractCssPlugin({
