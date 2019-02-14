@@ -36,4 +36,5 @@ urlpatterns = [
     url(r'^react_test/', include('react_test.urls', namespace="react_test")),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('reactapp.urls', namespace="reactapp")),
 ]
