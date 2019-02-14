@@ -31,7 +31,8 @@ module.exports = (env, argv) => {
   const bundlesPath = path.resolve('./react/build/bundles');
   const srcPath = path.resolve('./react/src');
 
-  const htmlTemplate = './react/src/index.html';
+  const localHtmlFilename = 'local-server-index.html';
+  const localHtmlTemplate = './react/src/' + localHtmlFilename;
 
     /** postcssPlugins ** {{{ */
   const postcssPlugins = [
@@ -80,7 +81,8 @@ module.exports = (env, argv) => {
     context: __dirname,
 
     entry: {
-      App: './react/src/index',
+      'local-server': './react/src/local-server',
+      'django-render': './react/src/django-render',
       // main: './react/src/main',
     },
 
@@ -105,8 +107,11 @@ module.exports = (env, argv) => {
       // @see:
       // - [Multiple Entry Points · Issue #141 · gaearon/react-hot-loader](https://github.com/gaearon/react-hot-loader/issues/141)
       contentBase: appBase,
+      index: localHtmlFilename,
       watchContentBase: true,
-      historyApiFallback: true,
+      historyApiFallback: {
+        index: '/' + localHtmlFilename,
+      },
       compress: true,
       port: 8080,
       // /*{{{*/before(app) {
@@ -204,7 +209,11 @@ module.exports = (env, argv) => {
       ),
       /* isDev && */ new HtmlWebPackPlugin({
         inject: true,
-        template: htmlTemplate,
+        template: localHtmlTemplate,
+        filename: localHtmlFilename,
+        excludeChunks: [
+          'django-render',
+        ],
       }),
       new ExtractCssPlugin({
         filename: bundleName('.css'),
@@ -242,13 +251,13 @@ module.exports = (env, argv) => {
           default: false,
           vendors: false,
           vendor: {
-            name: 'Vendor',
+            name: 'vendor',
             chunks: 'all',
             test: /node_modules/,
             priority: 20,
           },
           common: {
-            name: 'Common',
+            name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 10,
