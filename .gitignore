@@ -1,7 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # Generated content & submodules
-.dev-data
+/react/build
+/static
 
 # Python/Django
 .venv
@@ -20,9 +21,6 @@ log.txt
 *.sw?
 *~
 \!ARC*
-#*.session
-.publish/
-.webpack-stats.json
 
 # Include special jest files/folders
 !__mocks__
@@ -34,11 +32,6 @@ log.txt
 
 # testing
 /coverage
-
-# production
-/build
-# uncomment if need to deploy archive
-build-pack.zip
 
 # misc
 .DS_Store

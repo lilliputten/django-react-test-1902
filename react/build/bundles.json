@@ -9,20 +9,6 @@
         "name": "About-c115ae29.js.map"
       }
     ],
-    "App": [
-      {
-        "name": "App-d4374d22.css"
-      },
-      {
-        "name": "App-e6d61a5c.js"
-      },
-      {
-        "name": "App-d4374d22.css.map"
-      },
-      {
-        "name": "App-e6d61a5c.js.map"
-      }
-    ],
     "Contacts": [
       {
         "name": "Contacts-dc6920bb.js"
@@ -39,12 +25,42 @@
         "name": "Home-48c5ff23.js.map"
       }
     ],
-    "Vendor": [
+    "common": [
       {
-        "name": "Vendor-951d7a37.js"
+        "name": "common-b93e0c48.css"
       },
       {
-        "name": "Vendor-951d7a37.js.map"
+        "name": "common-82bf097f.js"
+      },
+      {
+        "name": "common-b93e0c48.css.map"
+      },
+      {
+        "name": "common-82bf097f.js.map"
+      }
+    ],
+    "django-render": [
+      {
+        "name": "django-render-1c89336d.js"
+      },
+      {
+        "name": "django-render-1c89336d.js.map"
+      }
+    ],
+    "local-server": [
+      {
+        "name": "local-server-8f07ed64.js"
+      },
+      {
+        "name": "local-server-8f07ed64.js.map"
+      }
+    ],
+    "vendor": [
+      {
+        "name": "vendor-2776a817.js"
+      },
+      {
+        "name": "vendor-2776a817.js.map"
       }
     ]
   }
