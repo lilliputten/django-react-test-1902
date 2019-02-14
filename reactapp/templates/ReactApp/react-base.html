@@ -1,0 +1,9 @@
+{# ex: set ft=htmldjango : #}
+{% extends 'ReactApp/base.html' %}
+{# {% load staticfiles %} #}
+{% block title %}React template{{ block.super }}{% endblock title %}
+{% block content %}
+  <div class="AppContainer" id="AppContainer"></div>
+  <p>props: {{props}}</p>
+  <p>location: {{location}}</p>
+{% endblock %}
