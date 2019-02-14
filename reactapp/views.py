@@ -64,6 +64,8 @@ class ReactAppView(View):
             },
         }
 
+        logger.info('context: ' + str(context))
+
         return render(request, self.template, context)
 
         # return HttpResponse(

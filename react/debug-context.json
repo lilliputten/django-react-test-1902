@@ -1,0 +1,19 @@
+{
+  "props": {
+    "users": [
+      {
+        "username": "alice"
+      },
+      {
+        "username": "bob"
+      }
+    ]
+  },
+  "component": "index.js",
+  "location": {
+    "path": "/About/",
+    "host": "localhost:8000",
+    "uri": "http://localhost:8000/About/"
+  },
+  "title": "[ReactApp]"
+}

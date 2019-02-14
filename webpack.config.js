@@ -74,7 +74,8 @@ module.exports = (env, argv) => {
       require('postcss-reporter'),
     ];/*}}}*/
 
-  const bundleName = (ext) => '[name]' + (!isServer ? '-[contenthash:8]' : '') + ext;
+  const useHashes = false;
+  const bundleName = (ext) => '[name]' + (useHashes && !isServer ? '-[contenthash:8]' : '') + ext;
 
   return {
 

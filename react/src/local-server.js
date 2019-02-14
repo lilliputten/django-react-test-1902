@@ -1,13 +1,46 @@
-// const r = require('react');
-// import r2 from 'react-dom';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/layout/App/App';
+// import { BrowserRouter, Switch, NavLink as Link, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+// import { matchPath } from 'react-router-dom';
+// import { matchPath } from 'react-router';
+// import { Router/* , browserHistory */ } from 'react-router';
 
-const content = (
-  <App mode="default"/>
-);
-// console.log(r, r2);
+// console.log(matchPath);
 // debugger;
+//
+// if (document.readyState === 'loading') {
+//   document.addEventListener('DOMContentLoaded', initializeApp);
+// } else {
+//   initializeApp();
+// }
+//
+// function initializeApp () {
+//   // const store = configureStore(window.__REDUX_STATE__)
+//
+//   const { pathname, search, hash } = window.location;
+//   const location = `${pathname}${search}${hash}`;
+//   // const routes = getRoutes(store);
+//   const routes = {};
+//   debugger;
+//
+//   matchPath({ routes, location }, () => {
+//         // <Router history={browserHistory}>
+//     ReactDOM.render((
+//         <Router>
+//           {routes}
+//         </Router>
+//       ),
+//       document.getElementById('root')
+//     );
+//   });
+// }
+
+import App from './components/layout/App/App';
+const content = (
+  <BrowserRouter>
+    <App mode="default"/>
+  </BrowserRouter>
+);
 ReactDOM.render(content, document.getElementById('AppContainer'));

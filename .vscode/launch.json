@@ -13,6 +13,13 @@
       "runtimeExecutable": "node"
     },
     {
+        "name": "test-bundles",
+        "program": "${workspaceRoot}/react/test-bundles.js",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "node"
+      },
+      {
       "name": "jest",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
