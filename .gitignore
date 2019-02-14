@@ -8,6 +8,7 @@
 *.pyc
 # *.db
 # *.sqlite3
+.logs/*.log
 
 # Unused & temp files
 \!UNUSED

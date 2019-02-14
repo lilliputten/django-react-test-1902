@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
+    'reactapp',
     'polls',
     'react_test',
 )
@@ -129,3 +130,72 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'react', 'build', 'bundles.json'),
     }
 }
+
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+#
+# Logging levels:
+#
+# - DEBUG: Low level system information for debugging purposes
+# - INFO: General system information
+# - WARNING: Information describing a minor problem that has occurred.
+# - ERROR: Information describing a major problem that has occurred.
+# - CRITICAL: Information describing a critical problem that has occurred.
+#
+# TODO 2019.02.14, 20:35 -- Check for exisiting `.logs` folder?
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    # 'incremental': True,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%Y.%m.%d %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'django': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, '.logs', 'django.log'),
+            'formatter': 'verbose'
+        },
+        'apps': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, '.logs', 'apps.log'),
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['django'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django_project': {
+            'handlers': ['apps'],
+            'level': 'DEBUG',
+        },
+        'reactapp': {
+            'handlers': ['apps'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
