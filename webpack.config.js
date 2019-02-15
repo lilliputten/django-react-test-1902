@@ -9,7 +9,10 @@
 
 module.exports = (env, argv) => {
 
+  // console.log('ARGV', argv);
+
   const isServer = (argv.mode === 'none');
+  const isWatch = !!argv.watch;
   // const isDev = (argv.mode === 'development');
   // const isProd = !isDev;
 
@@ -74,8 +77,8 @@ module.exports = (env, argv) => {
       require('postcss-reporter'),
     ];/*}}}*/
 
-  const useHashes = false;
-  const bundleName = (ext) => '[name]' + (useHashes && !isServer ? '-[contenthash:8]' : '') + ext;
+  const useHashes = true;
+  const bundleName = (ext) => '[name]' + (useHashes && !isWatch && !isServer ? '-[contenthash:8]' : '') + ext;
 
   return {
 

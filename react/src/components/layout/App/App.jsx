@@ -13,35 +13,8 @@ LoadingComponent.propTypes = {
   id: PropTypes.string,
 };
 
-// Pages...
-
-// console.log('App: before async components...');
-// debugger;
-// const AsyncHomePage = loadable({
-//   loading: LoadingComponent,
-//   loader: () => import( '../../pages/Home/Home' ),
-// });
-//
-// const AsyncAboutPage = loadable({
-//   loading: LoadingComponent,
-//   loader: () => import( '../../pages/About/About' ),
-// });
-//
-// const AsyncContactsPage = loadable({
-//   loading: LoadingComponent,
-//   loader: () => import( '../../pages/Contacts/Contacts' ),
-// });
-
-// const App = ({ mode }) => {
-//   // TODO: `NODE_ENV` must be in config!
-//   // const NODE_ENV = process.env.NODE_ENV;
-//   // console.log('App: NODE_ENV', NODE_ENV);
-//   // console.log('App mode', mode);
-//   // debugger;
-// };
-
-// const getChunkPath = (id) => `../../pages/${id}/${id}`;
-
+// Routes...
+// TODO 2019.02.15, 03:34 -- Move to separated config using on both client and server?
 const routesList = [
   {
     id: 'Home',
@@ -60,58 +33,57 @@ const routesList = [
   },
 ];
 
+const routes = routesList.map(({ id, path, loader }) => {
+  // const chunkPath = getChunkPath(id);
+  const loading = (<LoadingComponent id={id} />);
+  const route = {
+    id,
+    path,
+    content: loadable({
+      loading,
+      loader,
+    }),
+  };
+  console.log('App: route', id, ': ', route);
+  return route;
+});
+
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    const routes = {};
-    routesList.map(({ id, path, loader }) => {
-      // const chunkPath = getChunkPath(id);
-      const route = {
-        path,
-        // chunkPath,
-        // content: () => <LoadingComponent id={id} />,
-        content: loadable({
-          loading: () => <LoadingComponent id={id} />,
-          loader,
-        }),
-      };
-      routes[id] = route;
-      console.log('App: route', id, ': ', route);
-    });
-    debugger;
-    const paths = Object.keys(routes);
     this.state = {
-      paths,
       routes,
     };
   }
 
-  /** componentWillMount ** {{{
-   */
-  componentWillMount() {
-    console.log('App: componentWillMount');
-    debugger;
-  }/*}}}*/
+  // /** componentWillMount ** {{{
+  //  */
+  // componentWillMount() {
+  //   console.log('App: componentWillMount');
+  //   // debugger;
+  // }/*}}}*/
 
   /** render ** {{{
    */
   render() {
     const { mode } = this.props;
     const { routes } = this.state;
+    const routesMenu = [];
+    const routesContent = [];
+    routes.map(({id, path, content}) => {
+      routesMenu.push(<Link className="App-MenuItem" activeClassName="active" key={id} to={path}>{id}</Link>);
+      routesContent.push(<Route exact path={path} key={id} component={content} />);
+    });
     return (
       <div className="App" id={mode}>
         <div className="App-Menu">
           <span className="App-MenuLogo" />
-          <Link className="App-MenuItem" activeClassName="active" exact to="/">Home</Link>
-          <Link className="App-MenuItem" activeClassName="active" to="/About">About</Link>
-          <Link className="App-MenuItem" activeClassName="active" to="/Contacts">Contacts</Link>
+          {routesMenu}
         </div>
         <div className="App-Page">
           <Switch>
-            <Route exact path="/" component={routes.Home.content} />
-            <Route exact path="/About" component={routes.About.content} />
-            <Route exact path="/Contacts" component={routes.Contacts.content} />
+            {routesContent}
           </Switch>
         </div>
         <div className="App-Info">
