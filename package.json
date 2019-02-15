@@ -115,9 +115,9 @@
     "webpack-stats": "echo --Generate webpack stats-- && webpack --profile --json > .webpack-stats.json",
     "webpack-stats-analyze": "echo --Analyze webpack stats-- && webpack-bundle-analyzer .webpack-stats.json",
     "build": "echo --Webpack build (dev), process templates and bundles tracker-- && npm-run-all webpack-build-dev prettify-webpack-template prettify-webpack-tracker",
-    "static-collect": "echo --Collect static-- && python manage.py collectstatic --noinput",
+    "static-collect": "echo --Collect static-- && rm -Rf static/bundles/**/* && python manage.py collectstatic --noinput",
     "static-commit": "echo --Commit build-- && git add -Af react/build static && git commit -m \"auto commit build\" react/build static",
-    "build-static": "echo --Build webpack, collect static, commit-- && npm-run-all build-all static-collect static-commit",
+    "build-static": "echo --Build webpack, collect static, commit-- && npm-run-all build static-collect static-commit",
     "[utils]": "Misc helper utils...",
     "help": "echo --List all available script commands-- && npm-package-user-scripts-list"
   }

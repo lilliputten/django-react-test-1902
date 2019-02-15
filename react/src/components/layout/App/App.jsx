@@ -14,7 +14,7 @@ LoadingComponent.propTypes = {
 };
 
 // Routes...
-// TODO 2019.02.15, 03:34 -- Move to separated config using on both client and server?
+// TODO 2019.02.15, 03:34 -- Move route definitions to separated config using on both client and server?
 const routesList = [
   {
     id: 'Home',
