@@ -3,10 +3,10 @@
   "chunks": {
     "About": [
       {
-        "name": "About-c115ae29.js"
+        "name": "About-1a3aba6e.js"
       },
       {
-        "name": "About-c115ae29.js.map"
+        "name": "About-1a3aba6e.js.map"
       }
     ],
     "Contacts": [
@@ -30,29 +30,29 @@
         "name": "common-b93e0c48.css"
       },
       {
-        "name": "common-82bf097f.js"
+        "name": "common-47d1c6d1.js"
       },
       {
         "name": "common-b93e0c48.css.map"
       },
       {
-        "name": "common-82bf097f.js.map"
+        "name": "common-47d1c6d1.js.map"
       }
     ],
     "django-render": [
       {
-        "name": "django-render-1c89336d.js"
+        "name": "django-render-8027a23d.js"
       },
       {
-        "name": "django-render-1c89336d.js.map"
+        "name": "django-render-8027a23d.js.map"
       }
     ],
     "local-server": [
       {
-        "name": "local-server-8f07ed64.js"
+        "name": "local-server-e609b1c4.js"
       },
       {
-        "name": "local-server-8f07ed64.js.map"
+        "name": "local-server-e609b1c4.js.map"
       }
     ],
     "test": [
