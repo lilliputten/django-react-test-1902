@@ -8,9 +8,10 @@ import loadable from 'react-loadable';
 import './App.pcss';
 
 // loading view
-const LoadingComponent = ({ id }) => <div className="Loading" id="{id}">Loading {id}...</div>;
-LoadingComponent.propTypes = {
-  id: PropTypes.string,
+// const LoadingComponent = ({ id }) => <div className="Loading" id="{id}">Loading {id}...</div>;
+const LoadingComponentFactory = ({ id }) => {
+  const LoadingComponentWithId = () => <div className="Loading" id="{id}">Loading {id}...</div>;
+  return LoadingComponentWithId;
 };
 
 // Routes...
@@ -34,8 +35,7 @@ const routesList = [
 ];
 
 const routes = routesList.map(({ id, path, loader }) => {
-  // const chunkPath = getChunkPath(id);
-  const loading = (<LoadingComponent id={id} />);
+  const loading = LoadingComponentFactory({id});
   const route = {
     id,
     path,
@@ -44,7 +44,7 @@ const routes = routesList.map(({ id, path, loader }) => {
       loader,
     }),
   };
-  console.log('App: route', id, ': ', route);
+  // console.log('App: route', id, ': ', route);
   return route;
 });
 
@@ -72,7 +72,7 @@ class App extends React.Component {
     const routesMenu = [];
     const routesContent = [];
     routes.map(({id, path, content}) => {
-      routesMenu.push(<Link className="App-MenuItem" activeClassName="active" key={id} to={path}>{id}</Link>);
+      routesMenu.push(<Link className="App-MenuItem" activeClassName="active" key={id} exact to={path}>{id}</Link>);
       routesContent.push(<Route exact path={path} key={id} component={content} />);
     });
     return (
@@ -83,6 +83,9 @@ class App extends React.Component {
         </div>
         <div className="App-Page">
           <Switch>
+            {/* <Route exact path="/" component={AsyncHomePage} /> */}
+            {/* <Route exact path="/About" component={AsyncAboutPage} /> */}
+            {/* <Route exact path="/Contacts" component={AsyncContactsPage} /> */}
             {routesContent}
           </Switch>
         </div>
