@@ -11,10 +11,19 @@ module.exports = (env, argv) => {
 
   // console.log('ARGV', argv);
 
-  const isServer = (argv.mode === 'none');
+  const useDevTool = true;
+
+  const isDevServer = !!argv.host; // (argv.mode === 'none'); // (none = server) // Alternate method: !!argv.host;
   const isWatch = !!argv.watch;
-  // const isDev = (argv.mode === 'development');
-  // const isProd = !isDev;
+  const isDev = (/* isDevServer || */ argv.mode === 'development');
+  const isProd = !isDev;
+  const debugModes = [
+    isDevServer && 'DevServer',
+    isWatch && 'Watch',
+    isDev && 'Development',
+    isProd && 'Production'
+  ].filter(x => x).join(', ');
+  console.log('Running modes:', debugModes);
 
   const path = require('path');
 
@@ -78,7 +87,7 @@ module.exports = (env, argv) => {
     ];/*}}}*/
 
   const useHashes = true;
-  const bundleName = (ext) => '[name]' + (useHashes && !isWatch && !isServer ? '-[contenthash:8]' : '') + ext;
+  const bundleName = (ext) => '[name]' + (useHashes && !isWatch && !isDevServer ? '-[contenthash:8]' : '') + ext;
 
   return {
 
@@ -91,7 +100,7 @@ module.exports = (env, argv) => {
     },
 
     // NOTE: Sourcemaps in dev-tools mode...
-    devtool: 'cheap-module-source-map',
+    devtool: useDevTool && 'cheap-module-source-map',
 
     /*{{{*/resolve: {
       modules: [
@@ -200,7 +209,7 @@ module.exports = (env, argv) => {
       //     // NODE_ENV: JSON.stringify('development'), // Automatically passed by webpack
       //   }
       // }),
-      !isServer && new CleanWebpackPlugin(
+      !isDevServer && new CleanWebpackPlugin(
         [
           path.join(bundlesPath, '**/*'),
         ],
@@ -223,7 +232,7 @@ module.exports = (env, argv) => {
       new ExtractCssPlugin({
         filename: bundleName('.css'),
       }),
-      !isServer && new BundleTracker({
+      !isDevServer && new BundleTracker({
         filename: path.join(buildPath, 'bundles.json'),
       }),
       new AsyncChunkNames(),

@@ -30,7 +30,7 @@
 - `jest.config.js`
 - `.flake8`
 - `tsconfig.json` (set/reset `noUnusedLocals`, `noUnusedParameters` for production/development)
-- `tslint.yaml`
+- `tslint.yaml` (TODO?)
 - `.eslintrc.yml`
 - `.eslintignore`
 - '.stylelintrc.yml'
