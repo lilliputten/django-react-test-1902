@@ -21,18 +21,11 @@ const context = {
     host: 'localhost:8000',
     uri: 'http://localhost:8000/About/',
   },
-  title: '[ReactApp]',
+  title: '[Debug: ReactApp]',
 };
 
-// XXX 2019.02.15, 03:09 -- Preloading all modules (Where we need to do it?)
-// (see `test-bundles.js:loadChunks`)
-// const About = require('./components/pages/About/About');
-// const Home = require('./components/pages/Home/Home');
-// const Contacts = require('./components/pages/Contacts/Contacts');
-// console.log(Home, About, Contacts);
-
-const preloadAll = loadable.preloadAll();
 // On all chunks load finished...
+const preloadAll = loadable.preloadAll();
 preloadAll.then(() => {
   // console.log('test-bundles: loadable.preloadAll', loadable);
   const url = context.location.path;
@@ -43,12 +36,6 @@ preloadAll.then(() => {
     </StaticRouter>
   );
   const result = ReactDOMServer.renderToString(element);
-  console.log('result:', result);
-  // TODO 2019.02.15, 03:35 -- Catch output in django wrapper!
-  // debugger;
+  // Print output for django server
+  console.log(result);
 });
-
-// DEBUG: Control all chunks loading
-// setInterval(() => {
-//   console.log('preloadAll', preloadAll);
-// }, 1000);

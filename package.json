@@ -109,6 +109,7 @@
     "[webpack]": "Webpack commands",
     "server": "echo --Webpack development server-- && webpack-dev-server --mode development",
     "webpack-build-dev": "echo --Webpack build (dev)-- && webpack --mode development",
+    "webpack-build-dev-watch": "echo --Webpack build and watch (dev)-- && npm run webpack-build-dev -- --watch",
     "webpack-build-prod": "echo --Webpack build (prod)-- && webpack --mode production",
     "prettify-webpack-tracker": "cat react/build/bundles.json | sed 's/,\"path\"[:]\"[A-z0-9.,:\\\\-]*\"//g' | jsonpp > react/build/bundles.json",
     "prettify-webpack-template": "js-beautify -rns 2 react/build/bundles/local-server-index.html",

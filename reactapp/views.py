@@ -27,18 +27,18 @@ class ReactAppView(View):
     template = 'ReactApp/react-base.html'
     component = 'index.js'
 
-    def Home(request):
-        # test = reactWrapper.getTest()
-        # env = reactWrapper.getEnv()
-        return HttpResponse(
-            '<h1>reactapp Home</h1>\n' +
-            # '<p>env: ' + str(envStr + '</p>\n' +
-            '<ol>\n' +
-            '<li>Home</li>\n' +
-            '<li><a href="/About">About</a></li>\n' +
-            '<li><a href="/Contacts">Contacts</a></li>\n' +
-            '</ol>'
-        )
+    # def Home(request):
+    #     # test = reactWrapper.getTest()
+    #     # env = reactWrapper.getEnv()
+    #     return HttpResponse(
+    #         '<h1>reactapp Home</h1>\n' +
+    #         # '<p>env: ' + str(envStr + '</p>\n' +
+    #         '<ol>\n' +
+    #         '<li>Home</li>\n' +
+    #         '<li><a href="/About">About</a></li>\n' +
+    #         '<li><a href="/Contacts">Contacts</a></li>\n' +
+    #         '</ol>'
+    #     )
 
     def get(self, request):
         # test = reactWrapper.getTest()

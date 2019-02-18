@@ -8,6 +8,7 @@ from ReactApp.views import ReactAppView
 urlpatterns = [
     url(r'^$', ReactAppView.as_view()),
     url(r'^About/$', ReactAppView.as_view()),
+    url(r'^Contacts/$', ReactAppView.as_view()),
     # url(r'^$', views.Home, name='Home'),
     # url(r'^About/$', views.About, name='About'),
     # url(r'^Contacts/$', views.Contacts, name='Contacts'),

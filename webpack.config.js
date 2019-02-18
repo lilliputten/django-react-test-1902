@@ -11,19 +11,20 @@ module.exports = (env, argv) => {
 
   // console.log('ARGV', argv);
 
-  const useDevTool = true;
-
   const isDevServer = !!argv.host; // (argv.mode === 'none'); // (none = server) // Alternate method: !!argv.host;
   const isWatch = !!argv.watch;
   const isDev = (/* isDevServer || */ argv.mode === 'development');
   const isProd = !isDev;
+  const useDevTool = true && (isDevServer || isDevServer);
   const debugModes = [
     isDevServer && 'DevServer',
     isWatch && 'Watch',
     isDev && 'Development',
-    isProd && 'Production'
+    isProd && 'Production',
+    useDevTool && 'DevTool',
   ].filter(x => x).join(', ');
   console.log('Running modes:', debugModes);
+
 
   const path = require('path');
 
@@ -89,15 +90,19 @@ module.exports = (env, argv) => {
   const useHashes = true;
   const bundleName = (ext) => '[name]' + (useHashes && !isWatch && !isDevServer ? '-[contenthash:8]' : '') + ext;
 
+  const entry = {};
+  if (isDevServer) {
+    entry['local-server'] = './react/src/local-server';
+  }
+  else {
+    entry['django-render'] = './react/src/django-render';
+  }
+
   return {
 
     context: __dirname,
 
-    entry: {
-      'local-server': './react/src/local-server',
-      'django-render': './react/src/django-render',
-      'test': './react/src/test',
-    },
+    entry,
 
     // NOTE: Sourcemaps in dev-tools mode...
     devtool: useDevTool && 'cheap-module-source-map',
