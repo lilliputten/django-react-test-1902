@@ -1,5 +1,6 @@
 # TODO
 
+- 2019.02.19, 04:46 -- Merge bundles for server with gulp excluding `client-render.js`.
 - 2019.02.19, 01:45 -- Load async bundles from abs path (not from `./...`)
 - 2019.02.15, 03:41 -- (`test-bundles` chunks loader) Throw error if no chunk found?
 - 2019.02.15, 03:37 -- Suppress css and resource loading on server-side render!

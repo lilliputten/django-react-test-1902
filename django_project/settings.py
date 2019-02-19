@@ -117,7 +117,7 @@ STATICFILES_DIRS = (
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'react', 'build', 'bundles.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'react', 'build', 'bundles-info.json'),
     }
 }
 

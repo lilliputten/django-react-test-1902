@@ -90,12 +90,13 @@ module.exports = (env, argv) => {
   const useHashes = true;
   const bundleName = (ext) => '[name]' + (useHashes && !isWatch && !isDevServer ? '-[contenthash:8]' : '') + ext;
 
-  const entry = {};
-  if (isDevServer) {
-    entry['local-server'] = './react/src/local-server';
-  }
-  else {
-    entry['django-render'] = './react/src/django-render';
+  const entry = {
+    'client-render': './react/src/client-render',
+  };
+  if (!isDevServer) {
+    Object.assign(entry, {
+      'django-render': './react/src/django-render',
+    });
   }
 
   return {
@@ -231,14 +232,13 @@ module.exports = (env, argv) => {
         filename: localHtmlFilename,
         excludeChunks: [
           'django-render',
-          'test',
         ],
       }),
       new ExtractCssPlugin({
         filename: bundleName('.css'),
       }),
       !isDevServer && new BundleTracker({
-        filename: path.join(buildPath, 'bundles.json'),
+        filename: path.join(buildPath, 'bundles-info.json'),
       }),
       new AsyncChunkNames(),
     ].filter(x => x),/*}}}*/

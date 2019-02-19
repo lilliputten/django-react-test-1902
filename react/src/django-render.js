@@ -6,28 +6,31 @@ import loadable from 'react-loadable';
 
 import App from './components/layout/App/App';
 
-// DEBUG!
-// TODO 2019.02.15, 03:35 -- Parse stdin for passed context (and pass it from django + generate default state)
-const context = {
-  props: {
-    users: [
-      { username: 'alice' },
-      { username: 'bob' },
-    ]
-  },
-  component: 'index.js',
-  location: {
-    path: '/About/',
-    host: 'localhost:8000',
-    uri: 'http://localhost:8000/About/',
-  },
-  title: '[Debug: ReactApp]',
-};
+const __global = typeof global !== 'undefined' ? global : typeof module !== 'undefined' ? module : typeof window !== 'undefined' ? window : this;
+const context = __global.stdinData;
+// console.log('XXX django-render context', context); // DEBUG!
+
+// {{{ DEBUG: Sample context
+// const context = {
+//   props: {
+//     users: [
+//       { username: 'alice' },
+//       { username: 'bob' },
+//     ]
+//   },
+//   component: 'index.js',
+//   location: {
+//     path: '/About/',
+//     host: 'localhost:8000',
+//     uri: 'http://localhost:8000/About/',
+//   },
+//   title: '[Debug: ReactApp]',
+// };
+// }}}
 
 // On all chunks load finished...
 const preloadAll = loadable.preloadAll();
 preloadAll.then(() => {
-  // console.log('test-bundles: loadable.preloadAll', loadable);
   const url = context.location.path;
   // Render after all async chunks loaded!
   const element = (
@@ -35,7 +38,12 @@ preloadAll.then(() => {
       <App mode="default"/>
     </StaticRouter>
   );
-  const result = ReactDOMServer.renderToString(element);
+  const content = ReactDOMServer.renderToString(element);
+  const state = { test: Date.now() };
+  const result = {
+    content,
+    state,
+  };
   // Print output for django server
-  console.log(result);
+  console.log(JSON.stringify(result));
 });

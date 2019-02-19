@@ -13,31 +13,41 @@
  */
 
 // Fetch console parameters:
+
 // TODO 2019.02.19, 02:22 -- Specify parameter in configuration? Depends on DEBUG state? Make meged chunk dynamically?
 const allChunks = process.argv.indexOf('--all-chunks') !== -1;
+
 // Debug output in console (only for debugging -- in production real page content only must be at output)
 const consoleDebug = process.argv.indexOf('--console-debug') !== -1;
 
+// Common requirements & variables...
+
 const path = require('path');
 const fs = require('fs');
-const rootPath = path.dirname(__dirname);
-const bundlesPath = path.resolve(path.join(rootPath, 'react/build/bundles'));
 
-const mergedChunk = 'merged.js';
+// Root path from `react`
+const rootPath = path.dirname(__dirname);
+
+// Bundles (curent) path from project root
+const bundlesPath = path.resolve(path.join(rootPath, 'react/build'));
+
+// Merged chunk filename
+const mergedChunk = 'bundles-merged.js';
 
 /** {String[]} loadChunks ** {{{ Chunks list to load if not specified `allChunks`
  */
 const loadChunks = [
-  'vendor',
-  'common',
-  'About',
-  'Home',
-  'Contacts',
-  'django-render',
+  'bundles/vendor',
+  'bundles/common',
+  'bundles/About',
+  'bundles/Home',
+  'bundles/Contacts',
+  'bundles/django-render',
 ];/*}}}*/
 
-// Prepare fake DOM etc...
-prepareEnvironment();
+// Prepare fake DOM etc on global variables...
+require('./render-only');
+// prepareEnvironment();
 
 // Get single merged chunk or chunk series for `loadChunks` list
 const chunksToLoad = allChunks ? getChunksFromBundlesInfo() : [ mergedChunk ];
@@ -51,7 +61,7 @@ requireAllChunks(chunksToLoad);
  * @return {String[]}
  */
 function getChunksFromBundlesInfo() {
-  const bundlesInfoModule = path.resolve(path.join(rootPath, 'react/build/bundles.json'));
+  const bundlesInfoModule = path.resolve(path.join(rootPath, 'react/build/bundles-info.json'));
   const bundles = require(bundlesInfoModule);
   const chunks = bundles && bundles.chunks;
 
@@ -78,23 +88,6 @@ function getChunksFromBundlesInfo() {
   });
 
   return chunksToLoad;
-}/*}}}*/
-
-/** prepareEnvironment ** {{{
- * TODO 2019.02.15, 03:37 -- Suppress css and resource loading on server-side render!
- */
-function prepareEnvironment() {
-
-  const jsdom = require('jsdom');
-
-  // Create fake DOM
-  const dom = new jsdom.JSDOM();
-
-  // Mock global window, document etc...
-  const __global = typeof global !== 'undefined' ? global : typeof module !== 'undefined' ? module : typeof window !== 'undefined' ? window : this;
-  __global.window = dom.window;
-  __global.document = dom.window.document;
-
 }/*}}}*/
 
 /** requireAllChunks ** {{{ Require all chunks...

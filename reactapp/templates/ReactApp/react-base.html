@@ -4,8 +4,11 @@
 {% load render_bundle from webpack_loader %}
 {% block title %}{{ title }}{{ block.super }}{% endblock title %}
 {% block content %}
-  <div class="AppContainer" id="AppContainer"></div>
+<div class="AppContainer" id="AppContainer">{{content|safe}}</div>
+  <p>state: {{state}}</p>
   <p>props: {{props}}</p>
   <p>location: {{location}}</p>
-  {% render_bundle 'all' %}
+  {% render_bundle 'vendor' %}
+  {% render_bundle 'common' %}
+  {% render_bundle 'client-render' %}
 {% endblock %}
