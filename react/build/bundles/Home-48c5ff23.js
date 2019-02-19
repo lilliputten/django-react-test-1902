@@ -26,4 +26,3 @@ var Home = function Home() {
 /***/ })
 
 }]);
-//# sourceMappingURL=Home-48c5ff23.js.map

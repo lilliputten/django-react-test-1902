@@ -26,4 +26,3 @@ var Contacts = function Contacts() {
 /***/ })
 
 }]);
-//# sourceMappingURL=Contacts-dc6920bb.js.map
